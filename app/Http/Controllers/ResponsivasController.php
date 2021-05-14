@@ -14,7 +14,7 @@ use App\user;
 use App\InfoUsuarios;
 
 use App\Responsivas;
-use App\Responsivasestados;
+use App\ResponsivasEstados;
 use App\ResponsivasInsumos;
 use App\ResponsivasArchivos;
 use App\TiposResponsivasArchivos;
@@ -331,11 +331,11 @@ class ResponsivasController extends Controller
 	        $path = 'responsivas/'.$usuario_solicita[1];
 
             $nomarch = 'responsiva-'.$usuario_solicita[1].' '.date("m-d-Y H-i-s").'.pdf';
-	        if(!File::exists(public_path().'\\'.$path)) {
-				mkdir(public_path().'\\'.$path, 0755, true);
+	        if(!File::exists(public_path().'/'.$path)) {
+				mkdir(public_path().'/'.$path, 0755, true);
 			}
 			$usuario_solicita = explode("|", $request->solicitante);
-	        $mpdf->Output(public_path().'\\'.$path.'\\'.$nomarch, 'F');
+	        $mpdf->Output(public_path().'/'.$path.'/'.$nomarch, 'F');
 
             $respach = new ResponsivasArchivos();
 
@@ -464,9 +464,9 @@ class ResponsivasController extends Controller
 
         $archivo = ResponsivasArchivos::findOrFail($request->id);
 
-        $ruta = public_path().$archivo->ruta.'/'.$archivo->nombre;
-
-        if(File::exists($ruta)){    
+        $ruta = $archivo->ruta.'/'.$archivo->nombre;
+        
+        if(File::exists($ruta)){
             File::delete($ruta);
             $archivo->delete();
             return redirect()->back()->with('success','Se elimino el archivo con exito !');
@@ -491,8 +491,8 @@ class ResponsivasController extends Controller
 
             $path = 'responsivas/'.$request->username;
 
-            if(!File::exists(public_path().'\\'.$path)) {
-                mkdir(public_path().'\\'.$path, 0755, true);
+            if(!File::exists(public_path().'/'.$path)) {
+                mkdir(public_path().'/'.$path, 0755, true);
             }
 
             $file = $request->file('file');

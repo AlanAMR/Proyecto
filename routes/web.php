@@ -45,6 +45,14 @@ Route::get('/demos/ver/{id}/{pagina}','PlantillasController@pagina');
 	Route::get('/administracion','AdminController@inicio');
 	Route::get('/adminstracion/configuracion','AdminController@configuracion');
 
+	// Rutas de Administracion de Usuarios
+	Route::get('/administracion/usuarios','UsersController@index');
+	Route::get('/administracion/usuarios/ver/{id}','UsersController@ver');
+	Route::get('/administracion/usuarios/crear','UsersController@crear');
+	Route::post('/administracion/usuarios/agregar','UsersController@agregar');
+	Route::get('/administracion/usuarios/modificar','UsersController@modificar');
+	Route::post('/administracion/usuarios/actualizar','UsersController@actualizar');
+	Route::post('/administracion/usuarios/eliminar','UsersController@eliminar');
 
 	// Rutas de Administracion de proyectos
 	Route::get('/administracion/proyectos','AdminProyectosController@inicio');

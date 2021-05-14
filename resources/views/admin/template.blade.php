@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Telsacel</title>
+    <title>Pro Code</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('admin_theme/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -94,6 +94,8 @@
             </li>
 
 
+
+
             <!-- Nav Item - Paginas de el almacen vehicular -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAlmacen-ge"
@@ -106,6 +108,24 @@
                         <h6 class="collapse-header">Insumos</h6>
                         <a class="collapse-item" href="{{url('/almacen-general/responsivas')}}">Responsivas</a>
                         <a class="collapse-item" href="{{url('/almacen-general/vehiculos')}}">Insumos</a>
+                    </div>
+                </div>
+            </li>
+
+
+            <!-- Nav Item - Paginas de el almacen vehicular -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers-ge"
+                    aria-expanded="true" aria-controls="collapseUsers-ge">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Usuarios y Permisos</span>
+                </a>
+                <div id="collapseUsers-ge" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Usuarios y permisos</h6>
+                        <a class="collapse-item" href="{{url('/administracion/usuarios')}}">Usuarios</a>
+                        <a class="collapse-item" href="{{url('/administracion/roles')}}">Roles</a>
+                        <a class="collapse-item" href="{{url('/administracion/permisosesp')}}">Permisos Especiales</a>
                     </div>
                 </div>
             </li>
