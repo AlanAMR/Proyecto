@@ -432,7 +432,7 @@ class ResponsivasController extends Controller
             return redirect()->back()->with('error','No se pudo encontrar el archivo!');
 
 
-    	$file = public_path().$archivo->ruta.$archivo->nombre;
+    	$file = asset().$archivo->ruta.'/'.$archivo->nombre;
 
 		$headers = array(
 		          'Content-Type: application/pdf',
