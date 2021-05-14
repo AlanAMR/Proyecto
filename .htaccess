@@ -1,0 +1,4 @@
+RewriteCond %{HTTP_HOST} ^pruebas.alan-andre.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.pruebas.alan-andre.com/$
+RewriteCond %{REQUEST_URI} !public/
+RewriteRule (.*) /public/$1 [L]
