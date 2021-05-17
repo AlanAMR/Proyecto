@@ -19,37 +19,38 @@
             <div class="row animate-box">
                 <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
                     <h2>Contactanos</h2>
-                    <p>Be the first to know about the new templates.</p>
                 </div>
             </div>
             <div class="row animate-box">
                 <div class="col-md-12">
-                    <form class="form-inline">
+                    <form class="form-inline" method="post" action="{{url('/enviarmail')}}">
+
+                        @csrf
                         
                         <div class="col-md-4 col-sm-4">
                             <div class="form-group">
                                 <label for="name" class="sr-only">Nombre</label>
-                                <input type="text" class="form-control" id="name" placeholder="Nombre">
+                                <input name="name" type="text" class="form-control" id="name" placeholder="Nombre" required="">
                             </div>
                         </div>
 
                         <div class="col-md-4 col-sm-4">
                             <div class="form-group">
                                 <label for="email" class="sr-only">Correo electronico</label>
-                                <input type="email" class="form-control" id="email" placeholder="Correo electronico">
+                                <input name="email" type="email" class="form-control" id="email" placeholder="Correo electronico" required="">
                             </div>
                         </div>
                         
                         <div class="col-md-4 col-sm-4">
                             <div class="form-group">  
                                 <label for="phone" class="sr-only">Telefono</label>
-                                <input type="text" class="form-control" id="phone" placeholder="Telefono">
+                                <input name="phone" type="text" class="form-control" id="phone" placeholder="Telefono" required="">
                             </div>
                         </div>
 
                         <div class="col-md-12 col-sm-12">
                             <label for="message" class="sr-only">Mensaje</label>
-                            <textarea maxlength="5000" rows="5" class="form-control" name="message" id="message" placeholder="Mensaje"></textarea>
+                            <textarea maxlength="5000" rows="5" class="form-control" name="message" id="message" placeholder="Mensaje" required=""></textarea>
                         </div>
 
                         <div class="col-md-12 col-sm-12" style="padding-top: 5px; text-align: center;">
@@ -68,6 +69,15 @@
     <div class="gototop js-top">
         <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
     </div>
+    
+    @if ($message = Session::get('success'))
+        <script type="text/javascript">
+          function load() {
+            alert("{{$message}}");
+          }
+          window.onload = load;
+        </script>
+    @endif
     
     @extends('home.scripts')
 

@@ -185,7 +185,7 @@ class LaptopsController extends Controller
 
         $laptop->update();
 
-        return redirect()->back
+        return redirect()->back()
             ->with('success','Se actualizo la informacion de la laptop: '.$laptop->num_serie);
 
     }

@@ -83,8 +83,8 @@ Route::get('/demos/ver/{id}/{pagina}','PlantillasController@pagina');
 
 
 
-//test mail
-Route::get('/mail','HomeController@mail');
+// Correos
+Route::post('/enviarmail','HomeController@mail');
 
 
 Route::get('/utilerias/redireccion/rol','UtileriasController@redireccionRol');

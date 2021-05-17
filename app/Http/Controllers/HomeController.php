@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\mail\testmail;
+use App\mail\contacto;
 
 use App\Template;
 use App\TemplateDescripcion;
@@ -27,8 +27,10 @@ class HomeController extends Controller
      */
 
     public function mail(Request $request){
-        Mail::to('alan.morales.renteria@gmail.com')->send(new testmail());
-       return  "ip: ".$request->titulo();    
+
+        Mail::to(config('mail.from.address'))->send(new contacto($request));
+        
+        return redirect()->back()->with('success','Se envio correctamente el mensaje!');
     }
 
     public function getDatos(){
