@@ -14,14 +14,6 @@ class UtileriasController extends Controller
 
     public function redireccionRol ()
     {
-    	switch (Auth::user()->rol_id) {
-    		case '1':
-    			return redirect('/almacen/responsivas');
-    			break;
-    		
-    		default:
-    			return redirect('/');
-    			break;
-    	}
+		return redirect('/almacen/responsivas');
     }
 }

@@ -12,10 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 // Rutas Login/Logout 
 Auth::routes(['register' => false]);
 Route::get('/ingresar','HomeController@ingresar')->name('ingresar');
+
+// Test 
+Route::get('/test','HomeController@testMiddleware')->middleware('autoriza:test');
 
 // Rutas por defecto
 Route::get('/', 'HomeController@index');
@@ -46,13 +48,13 @@ Route::get('/demos/ver/{id}/{pagina}','PlantillasController@pagina');
 	Route::get('/adminstracion/configuracion','AdminController@configuracion');
 
 	// Rutas de Administracion de Usuarios
-	Route::get('/administracion/usuarios','UsersController@index');
-	Route::get('/administracion/usuarios/ver/{id}','UsersController@ver');
-	Route::get('/administracion/usuarios/crear','UsersController@crear');
-	Route::post('/administracion/usuarios/agregar','UsersController@agregar');
-	Route::get('/administracion/usuarios/modificar','UsersController@modificar');
-	Route::post('/administracion/usuarios/actualizar','UsersController@actualizar');
-	Route::post('/administracion/usuarios/eliminar','UsersController@eliminar');
+	Route::get('/administracion/usuarios','UsersController@index')->middleware('autoriza:Administrador');
+	Route::get('/administracion/usuarios/ver/{id}','UsersController@ver')->middleware('autoriza:Administrador');
+	Route::get('/administracion/usuarios/crear','UsersController@crear')->middleware('autoriza:Administrador');
+	Route::post('/administracion/usuarios/agregar','UsersController@agregar')->middleware('autoriza:Administrador');
+	Route::get('/administracion/usuarios/modificar/{id}','UsersController@modificar')->middleware('autoriza:Administrador');
+	Route::post('/administracion/usuarios/actualizar','UsersController@actualizar')->middleware('autoriza:Administrador');
+	Route::post('/administracion/usuarios/eliminar','UsersController@eliminar')->middleware('autoriza:Administrador');
 
 	// Rutas de Administracion de proyectos
 	Route::get('/administracion/proyectos','AdminProyectosController@inicio');
@@ -156,3 +158,7 @@ Route::get('/admin/configuracion/correos','AdminController@correos');
 Route::get('/templates','TemplateController@index');
 Route::get('/templates/{nombre}','TemplateController@vertemplate');
 Route::get('/templates/{nombre}/{seccion}','TemplateController@templatepagina');
+
+
+Route::get('/admin/configuracion/empresas','AdminController@empresas')->middleware('autoriza:Administrador');
+Route::get('/admin/configuracion/sucursales','AdminController@sucursales')->middleware('autoriza:Administrador');

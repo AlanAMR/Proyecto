@@ -118,4 +118,9 @@ class HomeController extends Controller
             ->with('alertas',$alertas)
         ;
     }
+
+    public function testMiddleware(){
+        
+        return "Rol correcto";
+    }
 }

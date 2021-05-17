@@ -58,10 +58,14 @@ class DatabaseSeeder extends Seeder
         // 14) Info Usuarios
         $this->call('InfoUsuariosSeeder');
 
-
-        // 14) Info Usuarios
+        // 15) Templates
         $this->call('TemplateSeeder');
 
+        // 16) Permisos
+        $this->call('PermisosSeeder');
+
+        // 17) Empresas
+        $this->call('EmpresasSeeder');
 
     }
 }

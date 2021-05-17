@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Roles;
 
 
 class UsersController extends Controller
@@ -14,7 +15,14 @@ class UsersController extends Controller
     }
     
     public function index(){
-        $usuarios = User::all();
+
+        $usuarios = User::
+            select('users.*','roles.valor as rol')
+            ->join('rolesusuarios','rolesusuarios.usuario_id','=','users.id')
+            ->join('roles','roles.id','=','rolesusuarios.rol_id')
+            ->where('users.status','!=','0')
+            ->get()
+            ;
 
         return view('usuarios.index')
             ->with('usuarios',$usuarios); 
@@ -23,7 +31,7 @@ class UsersController extends Controller
 
     public function ver($id){
         $user = User::findOrFail($id);
-
+        
         return view('usuarios.ver')
             ->with('usuario',$user);
     }
@@ -40,15 +48,67 @@ class UsersController extends Controller
         return response()->json(["Status" => "Usuario Agregado"]);
     }
 
-    public function modificar(){
-        return response()->json(["Vista" => "Modificar"]);
+    public function modificar($id){
+        
+        $usuario = User::
+            select('users.*','roles.valor as rol')
+            ->join('rolesusuarios','rolesusuarios.usuario_id','=','users.id')
+            ->join('roles','roles.id','=','rolesusuarios.rol_id')
+            ->where('users.id','=',$id)
+            ->first()
+            ;
+        $roles = Roles::all();
+
+        if($usuario == null)
+            return redirect()->back()->with('error','Usuario no encontrado');
+
+        return view('usuarios.modificar')
+            ->with('titulo','Modificar Usuario: '.$usuario->name)
+            ->with('roles',$roles)
+            ->with('usuario',$usuario);
+
+
+
     }
 
     public function actualizar(Request $request){
+        
         $validate = $request->validate([
-            "datos" => "required"
+            "id" => "required",
+            "nombre" => "required",
+            "nickname" => "required",
+            "rol" => "required",
+            "status" => "required"
         ]);
-        return response()->json(["Status" => "Usuario Actualizado"]);
+        
+        $cambiarpass = false;
+
+        if($request->password != ""){
+            if($request->password == $request->confirmpassword)
+            {
+                $cambiarpass = true;
+            }
+        }
+
+
+
+        $user = User::findOrFail($request->id);
+
+        $user->name = $request->nombre;
+        $user->nickname = $request->nickname;
+        $user->status = $request->status;
+
+        if ($cambiarpass) {
+            $user->password = bcrypt($request->password);
+        }
+
+        $user->update();
+
+
+        if($cambiarpass)
+            return redirect()->back()->with('success','Usuario actualizado, Contraseña actualizada');
+
+        return redirect()->back()->with('success','Usuario actualizado');
     }    
 
     public function eliminar(Request $request){
@@ -58,8 +118,8 @@ class UsersController extends Controller
         ]);
         
         $user = User::findOrFail($request->id);
-        $user->rol_id = 1;
-        $user->updates();
+        $user->status = 0;
+        $user->update();
 
         return response()->json(["Status" => "OK"]);
     }
