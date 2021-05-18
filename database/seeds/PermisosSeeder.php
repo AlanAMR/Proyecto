@@ -13,9 +13,15 @@ class PermisosSeeder extends Seeder
     {
 
         DB::table('permisos')->insert([
-            'tabla' => 'Ninguna',
+            'tabla' => 'Roles',
             'tipo' => 'Administrador',
             'identificador' => 'Administrador'
+        ]);
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Roles',
+            'tipo' => 'Almacen',
+            'identificador' => 'Almacen'
         ]);
 
         DB::table('permisos')->insert([
