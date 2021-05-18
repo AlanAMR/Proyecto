@@ -16,13 +16,10 @@ class AdminController extends Controller
         // $this->middleware('tienerolde...');
     }
     //
-    public function empresas(){
-    	$empresas = Empresas::all();
-    	
-    	return view('admin.empresas')
-    		->with('empresas',$empresas)
-    		->with('titulo','Gestion de Empresas')
-    	;
+    public function inicio(){
+		return view('admin.index')
+    		->with('titulo','Administracion')
+    	;    	
     }
 
     public function sucursales(){

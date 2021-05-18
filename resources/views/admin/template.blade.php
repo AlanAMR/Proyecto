@@ -221,11 +221,11 @@
                 <div id="collapseconfig" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{{url('admin/configuracion/principal')}}">Pagina Principal</a>
-                        <a class="collapse-item" href="{{url('admin/configuracion/correos')}}">Correos</a>
+                        <a class="collapse-item" href="{{url('administracion/configuracion/principal')}}">Pagina Principal</a>
+                        <a class="collapse-item" href="{{url('administracion/configuracion/correos')}}">Correos</a>
                         <h6 class="collapse-header">Empresas:</h6>
-                        <a class="collapse-item" href="{{url('admin/configuracion/empresas')}}">Empresas</a>
-                        <a class="collapse-item" href="{{url('admin/configuracion/sucursales')}}">Sucursales</a>
+                        <a class="collapse-item" href="{{url('administracion/empresas')}}">Empresas</a>
+                        <a class="collapse-item" href="{{url('administracion/sucursales')}}">Sucursales</a>
                     </div>
                 </div>
             </li>

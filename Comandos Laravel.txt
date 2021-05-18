@@ -1,0 +1,186 @@
+Iniciar servidor:
+php artisan serve --host=0.0.0.0 --port=8000			//pone al servidor a esuchar todas las peticiones hacia el puerto 8000
+
+Borrar base de datos y volverla a crear
+php migrate:fresh --seed 								//pone en marcha todas las migraciones y al finalizarlas, ejecuta los seeds
+
+Para manejar la vista de los errores
+php artisan vendor:publish --tag=laravel-errors			//mueve los archivos de los errores a la carpeta de vistas
+
+crear un modelo 
+php artisan make:model NOMBRE
+
+crear un controlador 
+php artisan make:controler NOMBRE
+
+crear un midleware
+php artisan make:middleware NOMBRE
+
+crear comando eejcutable (cmd en el servidor)
+php artisan make:command NAME
+
+obtener serial de equipo
+wmic bios get serialnumber
+
+//poder modificar las notificaciones
+php artisan vendor:publish --tag=laravel-notifications
+		
+//poder modificar las notificaciones de correo electronico
+php artisan vendor:publish --tag=laravel-mail
+
+// limpia la cache de la aplicacion
+php artisan config:cache
+
+// limpiar cache de rabol de archivos
+composer dump-autoload
+
+
+// Buscar y remplazar mediante expresiones regulares
+
+1) ctrl+h para buscar y remplazar
+2) seleccionar la opcion de expresion regular
+3) ejemplo:
+	find: 			href="(.*)"
+	replace: 		href="{{asset('$1')}}"
+
+4) buscar y remplazar
+
+
+
+Instalar MPDF
+
+( win ) enable ext=gd 					// php.ini
+( win )	enable ext=mbstring 				// php.ini
+( lin ) sudo apt-get install php-gd
+( lin ) sudo apt-get install php-mstring
+
+composer require mpdf/mpdf
+
+*Ejemplo:
+
+	public function pdf(){
+        $mpdf = new Mpdf();
+        $mpdf->WriteHTML('<h1>Hello world!</h1>');
+        $mpdf->Output();
+    }
+
+
+
+
+// Configurar Mail:
+
+// Configurar .ENV con 
+
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=465
+MAIL_USERNAME=alan.morales.renteria@gmail.com
+MAIL_PASSWORD=shylcgbbgnevihwi
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS=alan.morales.renteria@gmail.com
+MAIL_FROM_NAME="Prueba laravel"
+
+// Hacer la clase que hereda de "mail"
+// la guarda en App/mail
+
+php artisan make:mail testmail
+
+
+//web.php
+
+Route::get('/mail','HomeController@mail');
+
+
+//testmail.php
+
+class testmail extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
+
+    //public function __construct(Responsivas $responsiva)
+    public function __construct()
+    {
+        //$this->responsivas = $responsivas;
+    }
+
+    public function build()
+    {
+        return $this->view('mails.responsiva');
+    }
+}
+
+
+
+// mail.responsivas.blade.php
+
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <title>Llamado de emergencia</title>
+</head>
+<body>
+    <p>Hola! Se ha reportado un nuevo caso de emergencia a las .</p>
+    <p>Estos son los datos del usuario que ha realizado la denuncia:</p>
+    <ul>
+        <li>Nombre: </li>
+        <li>Teléfono: </li>
+        <li>DNI: </li>
+    </ul>
+    <p>Y esta es la posición reportada:</p>
+    <ul>
+
+    </ul>
+</body>
+</html>
+
+
+// En el controlador 
+
+use Illuminate\Support\Facades\Mail;
+use App\mail\testmail;
+
+public function mail(){
+        Mail::to('alan.morales.renteria@gmail.com')->send(new testmail());
+    }
+
+
+
+Subir pagina por ftp a hostinger:
+1) Crear acceso FTP al servidor(se administra en la seccion de accesos ftp / ssh)
+  
+  EJ (pruebas.alan-andre.com): user: u863721298  pass :   140Qgno5Vo]
+
+2) Borrar datos de cache antes de subir al servidor
+  php artisan config:cache
+  //renombrar el archivo boostrap/config.php => config.php_old
+3) Con algun gestor FTP subir los archivos del proyecto de laravel a la carpeta public_html o la raiz del subdominio
+  // Si solo son cambios; reemplazar los archivos es mas rapido,
+  // En cambio si es todo el proyecto, comprimirlo en zip
+  // y descomprimirlo en el servidor es MUCHO mas rapido que subir archivo por archivo 
+4) Generar el htacces correspondiente.
+
+
+//Al subir proyecto a hostinger:
+
+crear .htaccess:
+
+  RewriteCond %{HTTP_HOST} ^your-domain.com$ [NC,OR]
+  RewriteCond %{HTTP_HOST} ^www.your-domain.com$
+  RewriteCond %{REQUEST_URI} !your-laravel-folder/public/
+  RewriteRule (.*) /your-laravel-folder/public/$1 [L]
+
+Ejemplo:
+  RewriteCond %{HTTP_HOST} ^pruebas.alan-andre.com$ [NC,OR]
+  RewriteCond %{HTTP_HOST} ^www.pruebas.alan-andre.com/$
+  RewriteCond %{REQUEST_URI} !public/
+  RewriteRule (.*) /public/$1 [L]
+
+ 

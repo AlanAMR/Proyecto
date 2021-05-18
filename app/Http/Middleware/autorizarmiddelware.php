@@ -36,15 +36,28 @@ class autorizarmiddelware
         $rol = Roles::
             select('roles.valor as valor')
             ->join('rolesusuarios','rolesusuarios.rol_id','=','roles.id')
-            ->where('roles.valor','=','Administrador')
-            ->orWhere('roles.id','=',$permiso->rol)
+            ->where('rolesusuarios.usuario_id','=',$userid)
+            ->where('roles.id','=',$permiso->rol)
             ->first()
             ;
 
-        // ¿Es Administrador o tiene el rol requerido?
+        // ¿Tiene el rol requerido?
 
         if ($rol != null) {
                 return $next($request);
+        }
+
+        $rol = Roles::
+            select('roles.valor as valor')
+            ->join('rolesusuarios','rolesusuarios.rol_id','=','roles.id')
+            ->where('rolesusuarios.usuario_id','=',$userid)
+            ->where('roles.valor','=','Administrador')
+            ->first()
+            ;
+
+        // ¿Es Admin? 
+        if ($rol != null) {
+            return $next($request);
         }
 
         // 3) ¿Tiene el permiso especial?
@@ -60,7 +73,7 @@ class autorizarmiddelware
         }
 
         // No tiene permiso especial 
-        return redirect('/almacen/responsivas')->with('error', 'No tienes permiso para realizar esta accion (3).');
+        return redirect('/administracion')->with('error', 'No tienes permiso para realizar esta accion.');
     }
 
 }

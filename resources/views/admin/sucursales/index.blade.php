@@ -2,9 +2,9 @@
 
 @section('title_right')
 <!-- Boton aniadir -->
-<a href="{{url('administracion/sucursal/nuevo')}}">
+<a href="{{url('administracion/sucursales/nuevo')}}">
     <button type="button" class="btn btn-outline-primary btn-sm">
-      Agregar sucursal <i class="fa fa-plus-circle"></i>
+      Agregar Sucursal <i class="fa fa-plus-circle"></i>
     </button>
 </a>
 
@@ -19,6 +19,7 @@
                     <th>ID</th>
                     <th>Empresa</th>
                     <th>Sucursal</th>
+                    <th>Ubicacion</th>
                     <th>Opciones</th>
                 </tr>
             </thead>
@@ -28,10 +29,11 @@
                         <th>{{$sucursal->id}}</th>
                         <th>{{$sucursal->empresa}}</th>
                         <th>{{$sucursal->nombre}}</th>
+                        <th>{{$sucursal->ubicacion}}</th>
                         <th>
                             <div class="btn-group" role="group" aria-label="Basic example">
 
-                                <a href="{{url('administracion/sucursals/modificar/'.$sucursal->id)}}">
+                                <a href="{{url('administracion/sucursales/modificar/'.$sucursal->id)}}">
                                     <button class="btn btn-success btn-sm" style="margin-right: 5px">Modificar datos<i class="fas fa-file-pdf"></i></button> 
                                 </a>
 
@@ -41,7 +43,7 @@
                                 </button>   
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="modalEliminar-{{$sucursal->id}}" tabindex="-1" role="dialog" aria-labelledby="modalsucursallabel{{$sucursal->id}}" aria-hidden="true">
+                                <div class="modal fade" id="modalEliminar-{{$sucursal->id}}" tabindex="-1" role="dialog" aria-labelledby="modalempresalabel{{$sucursal->id}}" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
@@ -55,7 +57,7 @@
 
                                         <hr>
                                         
-                                        <form  method="post" action="{{url('/administracion/sucursal/eliminar')}}">
+                                        <form  method="post" action="{{url('/administracion/sucursales/eliminar')}}">
                                             @csrf
                                             <div class="input-group">
                                                 <input type="hidden" name="id" value="{{$sucursal->id}}">
@@ -85,6 +87,7 @@
                     <th>ID</th>
                     <th>Empresa</th>
                     <th>Sucursal</th>
+                    <th>Ubicacion</th>
                     <th>Opciones</th>
                 </tr>
             </tfoot>

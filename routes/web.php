@@ -148,8 +148,8 @@ Route::post('/almacen/chips/eliminar','ChipsController@eliminar');
 
 
 
-Route::get('/admin/configuracion/principal','AdminController@principal');
-Route::get('/admin/configuracion/correos','AdminController@correos');
+Route::get('/administracion/configuracion/principal','AdminController@principal');
+Route::get('/administracion/configuracion/correos','AdminController@correos');
 
 
 
@@ -160,5 +160,22 @@ Route::get('/templates/{nombre}','TemplateController@vertemplate');
 Route::get('/templates/{nombre}/{seccion}','TemplateController@templatepagina');
 
 
-Route::get('/admin/configuracion/empresas','AdminController@empresas')->middleware('autoriza:Administrador');
-Route::get('/admin/configuracion/sucursales','AdminController@sucursales')->middleware('autoriza:Administrador');
+/*
+	Rutas para la administracion de empresas
+*/
+Route::get('/administracion/empresas','EmpresasController@inicio')->middleware('autoriza:Administrador');
+Route::get('/administracion/empresas/nuevo','EmpresasController@nuevo')->middleware('autoriza:Administrador');
+Route::post('/administracion/empresas/crear','EmpresasController@crear')->middleware('autoriza:Administrador');
+Route::get('/administracion/empresas/modificar/{id}','EmpresasController@modificar')->middleware('autoriza:Administrador');
+Route::post('/administracion/empresas/actualizar','EmpresasController@actualizar')->middleware('autoriza:Administrador');
+Route::post('/administracion/empresas/eliminar','EmpresasController@eliminar')->middleware('autoriza:Administrador');
+
+/*
+	Rutas para la administracion de sucursales
+*/
+Route::get('/administracion/sucursales','SucursalesController@inicio')->middleware('autoriza:Administrador');
+Route::get('/administracion/sucursales/nuevo','SucursalesController@nuevo')->middleware('autoriza:Administrador');
+Route::post('/administracion/sucursales/crear','SucursalesController@crear')->middleware('autoriza:Administrador');
+Route::get('/administracion/sucursales/modificar/{id}','SucursalesController@modificar')->middleware('autoriza:Administrador');
+Route::post('/administracion/sucursales/actualizar','SucursalesController@actualizar')->middleware('autoriza:Administrador');
+Route::post('/administracion/sucursales/eliminar','SucursalesController@eliminar')->middleware('autoriza:Administrador');
