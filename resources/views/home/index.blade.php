@@ -9,8 +9,8 @@
             <div class="col-md-12 col-md-offset-0 text-left">
                 <div class="display-t">
                     <div class="display-tc">
-                        <h1 class="animate-box" data-animate-effect="fadeInUp">Tu Empresa al Siguiente Nivel</h1>
-                        <h2 class="animate-box" data-animate-effect="fadeInUp"> Soluciones Tecnologicas de alto nivel para tu empreza</h2>
+                        <h1 class="animate-box" data-animate-effect="fadeInUp">Desarrollo Web y Soporte Tecnico </h1>
+                        <h2 class="animate-box" data-animate-effect="fadeInUp"> Soluciones Tecnologicas de alto nivel para tu empresa</h2>
                         <p class="animate-box" data-animate-effect="fadeInUp"><a href="#" class="btn btn-white btn-lg btn-outline">Pro Code</a></p>
                     </div>
                 </div>
@@ -27,8 +27,8 @@
                     <span class="icon">
                         <i class="fas fa-palette"></i>
                     </span>
-                    <h3>Diseño web</h3>
-                    <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
+                    <h3>Soporte Tecnico.</h3>
+                    <p>Brindamos soluciones a los problemas de tus sistemas administrativos; basados en la infraestructura tecnológica e informática de tu empresa. </p>
                     <p><a href="#" class="btn btn-white btn-outline">Ver mas</a></p>
                 </div>
             </div>
@@ -37,8 +37,8 @@
                     <span class="icon">
                         <i class="fas fa-store"></i>
                     </span>
-                    <h3>E-commerce</h3>
-                    <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
+                    <h3>Desarrollo Web.</h3>
+                    <p>Desarrollo Web, Diseño y Aplicaciones Web Administrativas para todo el entorno de tu empresa. </p>
                     <p><a href="#" class="btn btn-white btn-outline">Ver mas</a></p>
                 </div>
             </div>
@@ -47,8 +47,8 @@
                     <span class="icon">
                         <i class="fas fa-code"></i>
                     </span>
-                    <h3>Desarrollo</h3>
-                    <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
+                    <h3>Servidores y Redes.</h3>
+                    <p>Administracion de Servidores y Soporte y Diseño de Infraestructura de Redes y Switching. </p>
                     <p><a href="#" class="btn btn-white btn-outline">Ver mas</a></p>
                 </div>
             </div>
