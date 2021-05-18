@@ -4,16 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sucursales extends Model
+class Almacenes extends Model
 {
-    protected $table = 'sucursales';
+    //
+    protected $table = 'almacenes';
   
 	protected $guarded = ['id'];
 
 	protected $fillable = [
+			'sucursal_id',
 			'nombre',
 			'ubicacion',
-			'empresa_id',
 			'status'
 		];
 

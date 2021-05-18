@@ -179,3 +179,14 @@ Route::post('/administracion/sucursales/crear','SucursalesController@crear')->mi
 Route::get('/administracion/sucursales/modificar/{id}','SucursalesController@modificar')->middleware('autoriza:Administrador');
 Route::post('/administracion/sucursales/actualizar','SucursalesController@actualizar')->middleware('autoriza:Administrador');
 Route::post('/administracion/sucursales/eliminar','SucursalesController@eliminar')->middleware('autoriza:Administrador');
+
+
+/*
+	Rutas para la administracion de almacenes
+*/
+Route::get('/administracion/almacenes','AlmacenesController@inicio')->middleware('autoriza:Administrador');
+Route::get('/administracion/almacenes/nuevo','AlmacenesController@nuevo')->middleware('autoriza:Administrador');
+Route::post('/administracion/almacenes/crear','AlmacenesController@crear')->middleware('autoriza:Administrador');
+Route::get('/administracion/almacenes/modificar/{id}','AlmacenesController@modificar')->middleware('autoriza:Administrador');
+Route::post('/administracion/almacenes/actualizar','AlmacenesController@actualizar')->middleware('autoriza:Administrador');
+Route::post('/administracion/almacenes/eliminar','AlmacenesController@eliminar')->middleware('autoriza:Administrador');

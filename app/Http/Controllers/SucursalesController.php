@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Empresas;
 use App\Sucursales;
+use App\Almacenes;
 
 class SucursalesController extends Controller
 {
@@ -18,6 +19,7 @@ class SucursalesController extends Controller
     	$sucursales = Sucursales::
     		select('sucursales.*','empresas.nombre as empresa')
     		->join('empresas','empresas.id','=','sucursales.empresa_id')
+            ->where('sucursales.status','!=','0')
     		->get();
     	
     	return view('admin.sucursales.index')
@@ -60,37 +62,44 @@ class SucursalesController extends Controller
     		'id' => 'required'
     	]);
 
-    	$sucursales = Sucursales::
-    		where('empresa_id','=',$request->id)
+    	$almacen = Almacenes::
+    		where('sucursal_id','=',$request->id)
+            ->where('status','!=','0')
     		->get();
 
     	$nombre;
 
-    	if($sucursales->count() == 0){
+    	if($almacen->count() == 0){
 
     		try{
-	    		$empresa = sucursales::findOrFail($request->id);
-	    		$nombre = $empresa->nombre;
-	    		$empresa->delete();
+	    		$sucursal = sucursales::findOrFail($request->id);
+	    		$nombre = $sucursal->nombre;
+                $sucursal->status = 0;
+	    		$sucursal->update();
 			}
 			catch(Exception $ex){
-				return redirect('administracion/sucursales')->with('error','La Empresa seleccionada no se pudo aliminar.(1).');	
+				return redirect('administracion/sucursales')->with('error','La Sucursal seleccionada no se pudo aliminar.(1).');	
 			}
-    		return redirect('administracion/sucursales')->with('success','La Empresa '.$nombre.' se eliminino con exito.');
+    		return redirect('administracion/sucursales')->with('success','La Sucursal '.$nombre.' se eliminino con exito.');
     	
     	}else{
-    		return redirect('administracion/sucursales')->with('error','La Empresa seleccionada no se pudo aliminar, (Error 2, Hay sucursales vinculadas a la empresa).');	
+    		return redirect('administracion/sucursales')->with('error','La Sucursal seleccionada no se pudo aliminar, (Error 2, Hay almacenes vinculados a la sucursal).');	
     	}
     }
 
 
     public function modificar($id){
 
-    	$empresa = sucursales::findOrFail($id);
+    	$sucursal = sucursales::findOrFail($id);
+
+        $empresa = Empresas::findOrFail($sucursal->empresa_id);
+        $empresas = Empresas::all();
 
     	return view('admin.sucursales.modificar')
-    		->with('empresa',$empresa)
-    		->with('titulo','Modificar la empresa '.$empresa->nombre)
+    		->with('sucursal',$sucursal)
+            ->with('empresas',$empresas)
+            ->with('empresa',$empresa)
+    		->with('titulo','Modificar la sucursal '.$sucursal->nombre)
     	;
     }
 
@@ -98,16 +107,19 @@ class SucursalesController extends Controller
     	
     	$validate = $request->validate([
     		'id' => 'required',
-    		'nombre' => 'required'
-    	]);
+    		'nombre' => 'required',
+            'ubicacion' => 'required',
+            'empresa' => 'required'
+     	]);
 
-    	$empresa = sucursales::findOrFail($request->id);
+    	$sucursal = sucursales::findOrFail($request->id);
 
-    	$empresa->nombre = $request->nombre;
+    	$sucursal->nombre = $request->nombre;
+        $sucursal->ubicacion = $request->ubicacion;
+        $sucursal->empresa_id = $request->empresa;
+    	$sucursal->update();
 
-    	$empresa->update();
-
-    	return redirect()->back()->with('success','Se actualizo la informacion de l a empresa.');
+    	return redirect()->back()->with('success','Se actualizo la informacion de la Sucursal.');
 
     }
 }

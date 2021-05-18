@@ -15,7 +15,9 @@ class EmpresasController extends Controller
     //
     public function inicio(){
     	
-    	$empresas = Empresas::all();
+    	$empresas = Empresas::
+            where('status','!=','0')
+            ->get();
     	
     	return view('admin.empresas.index')
     		->with('empresas',$empresas)
@@ -53,6 +55,7 @@ class EmpresasController extends Controller
 
     	$sucursales = Sucursales::
     		where('empresa_id','=',$request->id)
+            ->where('status','!=','0')
     		->get();
 
     	$nombre;
@@ -62,7 +65,8 @@ class EmpresasController extends Controller
     		try{
 	    		$empresa = Empresas::findOrFail($request->id);
 	    		$nombre = $empresa->nombre;
-	    		$empresa->delete();
+                $empresa->status = 0;
+	    		$empresa->update();
 			}
 			catch(Exception $ex){
 				return redirect('administracion/empresas')->with('error','La Empresa seleccionada no se pudo aliminar.(1).');	
