@@ -27,5 +27,17 @@ class EmpresasSeeder extends Seeder
             'ubicacion' => 'Mexico DF',
             'empresa_id' => '1'
         ]);
+
+        DB::table('almacenes')->insert([
+            'sucursal_id' => '1',
+            'nombre' => 'GDL Almacen Principal',
+            'ubicacion' => 'GDL'
+        ]);
+
+        DB::table('almacenes')->insert([
+            'sucursal_id' => '1',
+            'nombre' => 'GDL Almacen Secundario',
+            'ubicacion' => 'Zapopan'
+        ]);
     }
 }

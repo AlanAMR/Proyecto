@@ -11,7 +11,8 @@ class Empresas extends Model
 	protected $guarded = ['id'];
 
 	protected $fillable = [
-			'nombre'
+			'nombre',
+			'status'
 		];
 
 	public $timestamps = false;

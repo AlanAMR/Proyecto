@@ -226,6 +226,7 @@
                         <h6 class="collapse-header">Empresas:</h6>
                         <a class="collapse-item" href="{{url('administracion/empresas')}}">Empresas</a>
                         <a class="collapse-item" href="{{url('administracion/sucursales')}}">Sucursales</a>
+                        <a class="collapse-item" href="{{url('administracion/almacenes')}}">Almacenes</a>
                     </div>
                 </div>
             </li>

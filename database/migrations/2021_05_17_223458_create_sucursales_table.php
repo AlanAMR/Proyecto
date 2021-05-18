@@ -18,6 +18,7 @@ class CreateSucursalesTable extends Migration
             $table->string('nombre',100);
             $table->string('ubicacion',255);
             $table->foreignId('empresa_id')->constrained('empresas');
+            $table->tinyInteger('status')->default(1);
         });
     }
 
