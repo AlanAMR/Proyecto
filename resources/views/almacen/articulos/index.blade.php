@@ -8,6 +8,12 @@
     </button>
 </a>
 
+<a href="{{url('administracion/articulos/cargar-csv')}}">
+    <button type="button" class="btn btn-outline-primary btn-sm">
+      Agregar Multiples Articulos <i class="fa fa-plus-circle"></i>
+    </button>
+</a>
+
 @endsection
 
 @section('main_div')
@@ -30,8 +36,12 @@
                         <th>{{$articulo->id}}</th>
                         <th>
                             <center>
-                                <img src="{{asset('articulos/'.$articulo->id.'/'.$articulo->imagen)}}" alt="Image not found" 
-                                onerror="this.onerror=null;this.src='{{asset('img/error-img.png')}}';" style="max-width: 100px">
+                                @if($articulo->imagen != '')
+                                    <img src="{{asset('articulos/'.$articulo->id.'/'.$articulo->imagen)}}" alt="Image not found" 
+                                    onerror="this.onerror=null;this.src='{{asset('img/error-img.png')}}';" style="max-width: 100px">
+                                @else 
+                                    <img src="{{asset('img/error-img.png')}}" style="max-width: 100px">
+                                @endif
                                 
                             </center>
                         </th>

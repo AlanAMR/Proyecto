@@ -19,3 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('getsubcategorias/{categoria}', 'api\ArticulosController@getsubcategorias');
+
+Route::post('articulos/cargar_csv', 'api\ArticulosController@cargar_csv');
+Route::get('articulos/procesar_csv', 'api\ArticulosController@procesar_csv');

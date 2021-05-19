@@ -201,3 +201,6 @@ Route::post('/administracion/articulos/crear','ArticulosController@crear')->midd
 Route::get('/administracion/articulos/modificar/{id}','ArticulosController@modificar')->middleware('autoriza:Almacen');
 Route::post('/administracion/articulos/actualizar','ArticulosController@actualizar')->middleware('autoriza:Almacen');
 Route::post('/administracion/articulos/eliminar','ArticulosController@eliminar')->middleware('autoriza:Almacen');
+
+Route::get('/administracion/articulos/exportar_plantilla','ArticulosController@exportar_plantilla')->middleware('autoriza:Almacen');
+Route::get('/administracion/articulos/cargar-csv','ArticulosController@cargar_csv')->middleware('autoriza:Almacen');

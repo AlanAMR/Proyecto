@@ -12,9 +12,10 @@
 
 @section('main_div')
 	
-    <form id="nuevo-almacen" method="post" action="{{url('/administracion/articulos/crear')}}">
+    <form id="nuevo-articulo" method="post" action="{{url('/administracion/articulos/crear')}}" enctype='multipart/form-data'>
     
     @csrf
+
     <div class="row">
         
         <div class="col-md-4">
@@ -45,6 +46,20 @@
             </div>
         </div>
 
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="imagen-principal" class="form-label">Imagen Principal</label>
+                <input type="file" id="imagen-principal" name="imagen-principal" class="form-control" accept="image/*"/>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="imagen-secundaria" class="form-label">Imagenes Secundarias</label>
+                <input type="file" id="imagen-secundaria[]" name="imagen-secundaria[]" class="form-control" multiple="" accept="image/*"/>
+            </div>
+        </div>
+
         
     </div>
 
@@ -55,13 +70,13 @@
 <div class="row">
     <div class="col-md-12" style="text-align: center;">
         
-        <a href="{{url('administracion/almacenes')}}">
+        <a href="{{url('administracion/articulos')}}">
             <button class="btn btn-danger ">
                 Cancelar
             </button>
         </a>
-        <button class="btn btn-info" onclick="document.getElementById('nuevo-almacen').submit();">
-            Añadir Almacen
+        <button class="btn btn-info" onclick="document.getElementById('nuevo-articulo').submit();">
+            Añadir Articulo
         </button>
     </div>
 </div>
