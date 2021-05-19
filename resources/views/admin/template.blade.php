@@ -36,7 +36,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('utilerias/redireccion/rol')}}">
                 <div class="sidebar-brand-icon">
-                    <img src="{{asset('img/logo2_cambios.png')}}" width="100%" alt="Imagen de Logo">
+                    <img src="{{asset('Imagen_Corporativa/Logo/editado_2.png')}}" width="80%" alt="Imagen de Logo">
                 </div>
             </a>
 

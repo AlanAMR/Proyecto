@@ -48,7 +48,7 @@ class HomeController extends Controller
     {
         $datos = self::getDatos();
 
-        return view('home.index')
+        return view('landing_page.index')
             ->with('seccion','inicio')
             ->with('datos',$datos);
             ;
