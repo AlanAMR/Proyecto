@@ -4,18 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Articulos extends Model
+class Categorias extends Model
 {
-    protected $table = 'articulos';
+    protected $table = 'categorias';
   
 	protected $guarded = ['id'];
 
 	protected $fillable = [
-			'subcategoria_id', 
-			'categoria_id', 
-			'nombre', 
-			'imagen',
-			'status'
+			'valor'
 		];
 
 	public $timestamps = false;

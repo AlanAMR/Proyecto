@@ -18,7 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('getlaptops', 'api\insumosController@laptops');
-Route::get('getcelulares', 'api\insumosController@celulares');
-Route::get('getchips', 'api\insumosController@chips');
-Route::get('getall', 'api\insumosController@all');
+Route::get('getsubcategorias/{categoria}', 'api\ArticulosController@getsubcategorias');
