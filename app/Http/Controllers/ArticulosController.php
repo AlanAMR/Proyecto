@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Helper\Helper;
+
 use App\Articulos;
 use App\Almacenes;
 use App\Categorias;
 use App\Subcategorias;
+use App\Roles;
 
 use App\Exports\ArchivoPrimarioExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -17,10 +20,13 @@ class ArticulosController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    	
+        (new Helper())->verifysession();
     }
     //
     public function inicio(){
-    	
+
+
     	$articulos = Articulos::
             select('articulos.*','categorias.valor as categoria','subcategorias.valor as subcategoria')
             ->join('subcategorias','subcategorias.id','=','articulos.subcategoria_id')

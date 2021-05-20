@@ -81,8 +81,68 @@ class PermisosSeeder extends Seeder
         ]);
 
         DB::table('rolesusuarios')->insert([
+            'rol_id' => '2',
+            'usuario_id' => '1'
+        ]);
+
+        DB::table('rolesusuarios')->insert([
+            'rol_id' => '3',
+            'usuario_id' => '1'
+        ]);
+
+        DB::table('rolesusuarios')->insert([
             'rol_id' => '1',
             'usuario_id' => '2'
+        ]);
+
+        DB::table('rolesusuarios')->insert([
+            'rol_id' => '4',
+            'usuario_id' => '3'
+        ]);
+
+        DB::table('rolesusuarios')->insert([
+            'rol_id' => '4',
+            'usuario_id' => '4'
+        ]);
+
+        DB::table('rolesusuarios')->insert([
+            'rol_id' => '4',
+            'usuario_id' => '5'
+        ]);
+
+        DB::table('rolesusuarios')->insert([
+            'rol_id' => '4',
+            'usuario_id' => '6'
+        ]);
+
+        DB::table('rolesusuarios')->insert([
+            'rol_id' => '4',
+            'usuario_id' => '7'
+        ]);
+
+        DB::table('rolesusuarios')->insert([
+            'rol_id' => '4',
+            'usuario_id' => '8'
+        ]);
+
+        DB::table('rolesusuarios')->insert([
+            'rol_id' => '4',
+            'usuario_id' => '9'
+        ]);
+
+        DB::table('rolesusuarios')->insert([
+            'rol_id' => '4',
+            'usuario_id' => '10'
+        ]);
+
+        DB::table('rolesusuarios')->insert([
+            'rol_id' => '4',
+            'usuario_id' => '11'
+        ]);
+
+        DB::table('rolesusuarios')->insert([
+            'rol_id' => '4',
+            'usuario_id' => '12'
         ]);
     }
 }

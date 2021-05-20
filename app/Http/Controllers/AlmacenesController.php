@@ -13,6 +13,7 @@ class AlmacenesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        Helper::verifysession(Auth::id());
     }
     //
     public function inicio(){
