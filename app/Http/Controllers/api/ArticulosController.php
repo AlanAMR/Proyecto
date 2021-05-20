@@ -46,7 +46,7 @@ class ArticulosController extends Controller
 
     public function procesar_csv(){
 
-    	$array = (new DataImport)->toArray('importar/articulos.xlsx');
+    	$array = (new DataImport)->toArray('importar/chips.xlsx');
 
     	try{
 
@@ -101,4 +101,5 @@ class ArticulosController extends Controller
     	}
     	return response()->json(['message' => 'Archivo procesado con exito']);
     }
+    
 }

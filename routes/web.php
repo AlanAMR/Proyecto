@@ -138,13 +138,16 @@ Route::post('/almacen/laptops/eliminar','LaptopsController@eliminar');
 /*
 	Rutas para la administracion de chips
 */
-Route::get('/almacen/chips','ChipsController@inicio');
+Route::get('/almacen/chips','ChipsController@inicio')->middleware('autoriza:Sistemas');
 //Route::get('/almacen/chips/ver/{id}','ChipsController@ver');
-Route::get('/almacen/chips/nuevo','ChipsController@nuevo');
-Route::post('/almacen/chips/crear','ChipsController@crear');
-Route::get('/almacen/chips/modificar/{id}','ChipsController@modificar');
-Route::post('/almacen/chips/actualizar','ChipsController@actualizar');
-Route::post('/almacen/chips/eliminar','ChipsController@eliminar');
+Route::get('/almacen/chips/nuevo','ChipsController@nuevo')->middleware('autoriza:Sistemas');
+Route::post('/almacen/chips/crear','ChipsController@crear')->middleware('autoriza:Sistemas');
+Route::get('/almacen/chips/modificar/{id}','ChipsController@modificar')->middleware('autoriza:Sistemas');
+Route::post('/almacen/chips/actualizar','ChipsController@actualizar')->middleware('autoriza:Sistemas');
+Route::post('/almacen/chips/eliminar','ChipsController@eliminar')->middleware('autoriza:Sistemas');
+
+Route::get('/almacen/chips/exportar_plantilla','ChipsController@exportar_plantilla')->middleware('autoriza:Sistemas');
+Route::get('/almacen/chips/cargar_csv','ChipsController@cargar_csv')->middleware('autoriza:Sistemas');
 
 
 

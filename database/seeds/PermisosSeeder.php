@@ -20,8 +20,26 @@ class PermisosSeeder extends Seeder
 
         DB::table('permisos')->insert([
             'tabla' => 'Roles',
-            'tipo' => 'Almacen',
+            'tipo' => 'Rol',
             'identificador' => 'Almacen'
+        ]);
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Roles',
+            'tipo' => 'Rol',
+            'identificador' => 'Sistemas'
+        ]);
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Roles',
+            'tipo' => 'Rol',
+            'identificador' => 'RH'
+        ]);
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Roles',
+            'tipo' => 'Rol',
+            'identificador' => 'Contabilidad'
         ]);
 
         DB::table('permisos')->insert([

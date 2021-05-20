@@ -8,6 +8,12 @@
     </button>
 </a>
 
+<!-- Boton aniadir -->
+<a href="{{url('almacen/chips/cargar_csv')}}">
+    <button type="button" class="btn btn-outline-primary btn-sm">
+      Agregar Chips via CSV / Excel <i class="fa fa-plus-circle"></i>
+    </button>
+</a>
 @endsection
 
 @section('main_div')

@@ -8,6 +8,9 @@ use App\Chips;
 use App\SugerenciasChipsOperadores;
 use App\SugerenciasChipsPlanes;
 
+use App\Exports\ArchivoChipsExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class ChipsController extends Controller
 {
     public function __construct()
@@ -129,5 +132,18 @@ class ChipsController extends Controller
         $chip->update();
 
         return redirect('/almacen/chips')->with('success','Se elimino con exito el chip: '.$chip->id);
+    }
+
+    public function cargar_csv(){
+
+        return view('chips.cargar_csv')
+            ->with('titulo','Cargar multiples Chips via CSV / EXCEL');
+
+    }
+
+    public function exportar_plantilla(){
+
+        $export = new ArchivoChipsExport;
+        return Excel::download($export, 'template_chips.xlsx');
     }
 }

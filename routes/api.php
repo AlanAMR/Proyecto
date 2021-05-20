@@ -22,3 +22,6 @@ Route::get('getsubcategorias/{categoria}', 'api\ArticulosController@getsubcatego
 
 Route::post('articulos/cargar_csv', 'api\ArticulosController@cargar_csv');
 Route::get('articulos/procesar_csv', 'api\ArticulosController@procesar_csv');
+
+Route::post('almacen/chips/cargar_csv', 'api\ChipsController@cargar_csv');
+Route::get('almacen/chips/procesar_csv', 'api\ChipsController@procesar_csv');
