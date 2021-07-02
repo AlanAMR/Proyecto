@@ -43,27 +43,27 @@ class PermisosSeeder extends Seeder
         ]);
 
         DB::table('permisos')->insert([
-            'tabla' => 'test',
-            'tipo' => 'test',
-            'identificador' => 'test'
+            'tabla' => 'Horarios',
+            'tipo' => 'Permiso',
+            'identificador' => 'verhorarios'
         ]);
 
         DB::table('permisos')->insert([
-            'tabla' => 'test1',
-            'tipo' => 'test1',
-            'identificador' => 'test1'
+            'tabla' => 'Horarios',
+            'tipo' => 'Permiso',
+            'identificador' => 'crearhorarios'
         ]);
 
         DB::table('permisos')->insert([
-            'tabla' => 'test2',
-            'tipo' => 'test2',
-            'identificador' => 'test2'
+            'tabla' => 'Horarios',
+            'tipo' => 'Permiso',
+            'identificador' => 'modificarhorarios'
         ]);
 
         DB::table('permisos')->insert([
-            'tabla' => 'test3',
-            'tipo' => 'test3',
-            'identificador' => 'test3'
+            'tabla' => 'Horarios',
+            'tipo' => 'Permiso',
+            'identificador' => 'eliminarhorarios'
         ]);
 
         DB::table('permisos')->insert([
@@ -72,39 +72,9 @@ class PermisosSeeder extends Seeder
             'identificador' => 'test4'
         ]);
 
-        DB::table('permisosroles')->insert([
-            'permiso_id' => '1',
-            'rol_id' => '1'
-        ]);
-
-        DB::table('permisosroles')->insert([
-            'permiso_id' => '2',
-            'rol_id' => '1'
-        ]);
-
-        DB::table('permisosroles')->insert([
-            'permiso_id' => '3',
-            'rol_id' => '1'
-        ]);
-
-        DB::table('permisosroles')->insert([
-            'permiso_id' => '4',
-            'rol_id' => '1'
-        ]);
-
-
+        
         DB::table('rolesusuarios')->insert([
             'rol_id' => '1',
-            'usuario_id' => '1'
-        ]);
-
-        DB::table('rolesusuarios')->insert([
-            'rol_id' => '2',
-            'usuario_id' => '1'
-        ]);
-
-        DB::table('rolesusuarios')->insert([
-            'rol_id' => '3',
             'usuario_id' => '1'
         ]);
 
@@ -162,5 +132,143 @@ class PermisosSeeder extends Seeder
             'rol_id' => '4',
             'usuario_id' => '12'
         ]);
+
+
+        // Permisos Para las rutas de usuarios
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Users',
+            'tipo' => 'Permiso',
+            'identificador' => 'verusuarios'
+        ]);
+
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Users',
+            'tipo' => 'Permiso',
+            'identificador' => 'modificarusuarios'
+        ]);
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Users',
+            'tipo' => 'Permiso',
+            'identificador' => 'cambiarestadousuarios'
+        ]);
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Users',
+            'tipo' => 'Permiso',
+            'identificador' => 'eliminarusuarios'
+        ]);
+
+        //Permisos para las rutas de empresas
+        DB::table('permisos')->insert([
+            'tabla' => 'Empresas',
+            'tipo' => 'Permiso',
+            'identificador' => 'verempresas'
+        ]);
+
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Empresas',
+            'tipo' => 'Permiso',
+            'identificador' => 'crearempresas'
+        ]);
+
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Users',
+            'tipo' => 'Permiso',
+            'identificador' => 'modificarempresas'
+        ]);
+
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Users',
+            'tipo' => 'Permiso',
+            'identificador' => 'eliminarempresas'
+        ]);
+
+        //Permisos para las rutas de areas. 
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Areas',
+            'tipo' => 'Permiso',
+            'identificador' => 'verareas'
+        ]);
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Areas',
+            'tipo' => 'Permiso',
+            'identificador' => 'crearareas'
+        ]);
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Areas',
+            'tipo' => 'Permiso',
+            'identificador' => 'modificarareas'
+        ]);
+
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Areas',
+            'tipo' => 'Permiso',
+            'identificador' => 'eliminarareas'
+        ]);
+
+
+        // Permisos para las rutas de puestos. 
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Puestos',
+            'tipo' => 'Permiso',
+            'identificador' => 'verpuestos'
+        ]);
+
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Puestos',
+            'tipo' => 'Permiso',
+            'identificador' => 'crearpuestos'
+        ]);
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Puestos',
+            'tipo' => 'Permiso',
+            'identificador' => 'modificarpuestos'
+        ]);
+        DB::table('permisos')->insert([
+            'tabla' => 'Puestos',
+            'tipo' => 'Permiso',
+            'identificador' => 'eliminarpuestos'
+        ]);
+
+        // Permisos para las rutas de sucursales. 
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Sucursales',
+            'tipo' => 'Permiso',
+            'identificador' => 'versucursales'
+        ]);
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Sucursales',
+            'tipo' => 'Permiso',
+            'identificador' => 'crearsucursales'
+        ]);
+
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Sucursales',
+            'tipo' => 'Permiso',
+            'identificador' => 'modificarsucursales'
+        ]);
+
+        DB::table('permisos')->insert([
+            'tabla' => 'Sucursales',
+            'tipo' => 'Permiso',
+            'identificador' => 'eliminarsucursales'
+        ]);
+
     }
 }

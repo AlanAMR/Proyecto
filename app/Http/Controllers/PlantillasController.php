@@ -17,8 +17,8 @@ class PlantillasController extends Controller
     public function getDatos(){
         return [
             'titulo' => 'Inicio',
-            'organizacion' => 'PRO CODE',
-            'logo' => 'img/logo.png',
+            'organizacion' => 'Telsa Solutions',
+            'logo' => 'telsa/assets/img/navbar-logo.svg',
             'telefono' => '33-3550-5663',
             'email' => 'procodegdl@gmail.com',
             'facebook' => 'https://www.facebook.com/proocode/'

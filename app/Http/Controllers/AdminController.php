@@ -12,8 +12,6 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        // faltan los middleware para validar el rol del usuario
-        // $this->middleware('tienerolde...');
     }
     //
     public function inicio(){
@@ -22,17 +20,4 @@ class AdminController extends Controller
     	;    	
     }
 
-    public function sucursales(){
-    	
-    	$sucursales = Sucursales::
-    		select('sucursales.*','empresas.nombre as empresa')
-    		->join('empresas','empresas.id','=','sucursales.empresa_id')
-    		->get()
-    		;
-
-    	return view('admin.sucursales')
-    		->with('sucursales',$sucursales)
-    		->with('titulo','Gestion de Sucursales')
-    	;
-    }
 }

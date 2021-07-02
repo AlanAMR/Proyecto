@@ -67,8 +67,14 @@ class DatabaseSeeder extends Seeder
         // 17) Empresas
         $this->call('EmpresasSeeder');
 
-        // 17) Empresas
+        // 18) Articulos
         $this->call('ArticulosSeeder');
+
+        // 19) Areas
+        $this->call('AreasSeeder');
+
+        // 19) Areas
+        $this->call('HorariosSeeder');
 
     }
 }

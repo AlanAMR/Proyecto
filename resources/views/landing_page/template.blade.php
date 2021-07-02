@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Telsacel</title>
+        <title>Telsa Solutions</title>
         <link rel="icon" type="image/x-icon" href="{{asset('telsa/assets/img/favicon.ico')}}" />
         <!-- Font Awesome icons (free version)-->
         <script src="{{asset('telsa/js/all.js')}}" crossorigin="anonymous"></script>
@@ -13,14 +13,17 @@
         <link href="{{asset('telsa/css/montserrat.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('telsa/css/droid.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('telsa/css/robot.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('telsa/css/slider.css')}}" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{asset('telsa/css/styles.css')}}" rel="stylesheet" />
     </head>
-    <body id="page-top">
-        <!-- Navigation-->
+
+    
+    <body id="page-top" style="">
+        <!-- Navigation-->  
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="{{('telsa/assets/img/navbar-logo.svg')}}" alt="" /></a>
+                <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="{{('telsa/assets/img/portfolio/Telsa solutions tm.png')}}"/></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ml-1"></i>
@@ -38,7 +41,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->nickname }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -65,10 +68,13 @@
                 </div>
             </div>
         </nav>
+
+        
+
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading text-uppercase">Bienvenidos a Telsa!</div>
+                <div class="masthead-subheading text-uppercase">Bienvenidos a TelsaSolutions <span class="trade-mark">TM</span> </div>
                 <div class="masthead-heading text-uppercase">Adelante Hacia el Futuro</div>
                 <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#contact">Contactanos</a>
             </div>
@@ -78,35 +84,90 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Servicios</h2>
-                    <h3 class="section-subheading text-muted">En TelsaSolutions somos expertos en diseñar e implementar proyectos de infraestructura y soluciones de valor agregado para sectores estratégicos: Telecom, IT, Energía y Construcción. Nuestro principal objetivo es la satisfacción de nuestros clientes al asegurar la entrega desus proyectos en tiempo y forma aplicando técnicas ágiles de manejo de proyectos y tecnología de punta en la implementación de los mismos. 
-</h3>
+                    <h3 class="section-subheading text-muted">En Telsa Solutions somos expertos en diseñar e implementar proyectos de infraestructura y soluciones de valor agregado para sectores estratégicos: Telecom, IT, Energía y Construcción. Nuestro principal objetivo es la satisfacción de nuestros clientes al asegurar la entrega desus proyectos en tiempo y forma aplicando técnicas ágiles de manejo de proyectos y tecnología de punta en la implementación de los mismos. 
+                    </h3>
                 </div>
                 <div class="row text-center">
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary" style="color: #ed6b00"></i>
-                            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">E-Commerce</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+
+                    <div class="col-md-3">
+                        <img class="img-fluid" src="{{asset('telsa/assets/img/portfolio/Telsa Commerce.jpg')}}" alt="" style="max-height: 300px"/>
+                        
+                        <h4 class="my-3">Commerce</h4>
+                        <p class="text-muted">COMERCIALIZACIÓN - Arrendamiento y comercialización de maquinaria, equipos de medición y misceláneos.</p>
                     </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Responsive Design</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+
+                    <div class="col-md-3">
+                        <img class="img-fluid" src="{{asset('telsa/assets/img/portfolio/Telsa Consulting.jpg')}}" alt="" style="max-height: 300px"/>
+                        
+                        <h4 class="my-3">Consulting</h4>
+                        <p class="text-muted">SERVICIO PAQUETIZADO - Ubicación del major professional para brindar  servicios paquetizados de  cualquier perfil técnico, seguimiento al desempeño.</p>
                     </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Web Security</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+
+                    <div class="col-md-3">
+                        <img class="img-fluid" src="{{asset('telsa/assets/img/portfolio/Telsa Networks.jpg')}}" alt="" style="max-height: 300px"/>
+                        
+                        <h4 class="my-3">Networks</h4>
+                        <p class="text-muted">SOPORTE A REDES, SEGURIDAD Y AUTOMATIZACIÓN - Polizas de mantenimiento IT, diseño de sistemas  de seguridad,CCTV, LAN, WAN,  servicios en la nube y virtualización.</p>
                     </div>
+
+                    <div class="col-md-3">
+                        <img class="img-fluid" src="{{asset('telsa/assets/img/portfolio/Telsa Services.jpg')}}" alt="" style="max-height: 300px"/>
+                        
+                        <h4 class="my-3">Services</h4>
+                        <p class="text-muted">INFRAESTRUCTURA - Diseño, digitalización, implementación, construcción, operación y mantenimiento de infraestructura de telecomunicaciones.</p>
+                    </div>
+                    
+
                 </div>
+            </div>
+        </section>
+
+        <section class="page-section" id="slider">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Slider</h2>
+                    <h3 class="section-subheading text-muted">
+                        Slider 
+                    </h3>
+                </div>
+                <div class="row">
+                        <div class="col-lg-3 col-md-3">
+                            
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                  <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                  </ol>
+                                  <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                      <img class="d-block w-100" src="{{asset('telsa/assets/img/portfolio/TelsaSolutions Commerce.png')}}" alt="First slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                      <img class="d-block w-100" src="{{asset('telsa/assets/img/portfolio/TelsaSolutions Consulting.png')}}" alt="Second slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                      <img class="d-block w-100" src="{{asset('telsa/assets/img/portfolio/TelsaSolutions Networks.png')}}" alt="Third slide">
+                                    </div>
+                                  </div>
+                              </div>
+                              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                            </div>
+                        </div>   
+                        <div class="col-lg-3 col-md-3">
+                            
+                        </div>
+                </div>
+                
             </div>
         </section>
         <!-- Portfolio Grid-->
@@ -247,16 +308,16 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="{{asset('telsa/assets/img/logos/envato.jpg')}}" alt="" /></a>
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="{{asset('telsa/assets/img/peaple-1.png')}}" alt="" /></a>
                     </div>
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="{{asset('telsa/assets/img/logos/designmodo.jpg')}}" alt="" /></a>
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="{{asset('telsa/assets/img/peaple-2.png')}}" alt="" /></a>
+                    </div>
+                    <div class="col-md-3 col-sm-60y-3">
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="{{asset('telsa/assets/img/peaple-3.png')}}" alt="" /></a>
                     </div>
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="{{asset('telsa/assets/img/logos/themeforest.jpg')}}" alt="" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="{{asset('telsa/assets/img/logos/creative-market.jpg')}}" alt="" /></a>
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="{{asset('telsa/assets/img/peaple-4.png')}}" alt="" /></a>
                     </div>
                 </div>
             </div>
@@ -266,27 +327,31 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Contactanos</h2>
-                    <h3 class="section-subheading " style="color:white;">Mejores soluciones con solo con Telsa.</h3>
+                    <h3 class="section-subheading " style="color:white;">Mejores soluciones solo con Telsa.</h3>
                 </div>
-                <form id="contactForm" name="sentMessage" novalidate="novalidate">
+
+
+
+                <form method="post" action="{{url('/enviarmail')}}">
+                    @csrf
                     <div class="row align-items-stretch mb-5">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input class="form-control" id="name" type="text" placeholder="Tu Nombre *" required="required" data-validation-required-message="Please enter your name." />
+                                <input class="form-control" name="name" id="name" type="text" placeholder="Tu Nombre *" required="required" data-validation-required-message="Please enter your name." />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="email" type="email" placeholder="Tu Correo *" required="required" data-validation-required-message="Please enter your email address." />
+                                <input class="form-control" name="email" id="email" type="email" placeholder="Tu Correo *" required="required" data-validation-required-message="Please enter your email address." />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="form-group mb-md-0">
-                                <input class="form-control" id="phone" type="tel" placeholder="Tu telefono *" required="required" data-validation-required-message="Please enter your phone number." />
+                                <input class="form-control" name="phone" id="phone" type="tel" placeholder="Tu telefono *" required="required" data-validation-required-message="Please enter your phone number." />
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group form-group-textarea mb-md-0">
-                                <textarea class="form-control" id="message" placeholder="Escribe Aqui tu Mensaje *" required="required" data-validation-required-message="Please enter a message."></textarea>
+                                <textarea class="form-control" name="message" id="message" placeholder="Escribe Aqui tu Mensaje *" required="required" data-validation-required-message="Please enter a message." rows="6"></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -302,13 +367,11 @@
         <footer class="footer py-4">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-left">Copyright © Derechos Reservados a Telsacel 2021</div>
-                    <div class="col-lg-4 my-3 my-lg-0">
+                    <div class="col-lg-6 text-lg-left">Copyright © Derechos Reservados a TelsaSolutions<span class="mini-trade-mark">TM</span> 2021</div>
+                    <div class="col-lg-6 my-3 my-lg-0">
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                    <div class="col-lg-4 text-lg-right">
                     </div>
                 </div>
             </div>
@@ -494,6 +557,15 @@
                 </div>
             </div>
         </div>
+
+        @if ($message = Session::get('success'))
+            <script type="text/javascript">
+              function load() {
+                alert("{{$message}}");
+              }
+              window.onload = load;
+            </script>
+        @endif
         <!-- Bootstrap core JS-->
         <script src="{{asset('telsa/js/jquery.min.js')}}"></script>
         <script src="{{asset('telsa/js/bootstrap.bundle.min.js')}}"></script>

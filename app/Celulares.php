@@ -19,9 +19,9 @@ class Celulares extends Model
   protected $guarded = ['id'];
 
   protected $fillable = [
+  		'num_serie', 
   		'marca', 
   		'modelo', 
-  		'num_serie', 
   		'imei',
   		'color',
   		'companiamovil',

@@ -2,13 +2,13 @@
 
 @section('title_right')
 <!-- Boton aniadir -->
-<a href="{{url('administracion/articulos')}}">
+<a href="{{url('almacen-general/articulos')}}">
     <button type="button" class="btn btn-outline-info btn-sm">
       Regresar
     </button>
 </a>
 
-<a href="{{url('administracion/articulos/exportar_plantilla')}}">
+<a href="{{url('almacen-general/articulos/exportar_plantilla')}}">
     <button type="button" class="btn btn-outline-info btn-sm">
       Descargar plantilla .CSV
     </button>
@@ -18,14 +18,14 @@
 
 @section('main_div')
 	
-    <form id="nuevo-almacen" method="post" action="{{url('/administracion/articulos/crear')}}">
+    <form id="nuevo-almacen" method="post" action="{{url('/almacen-general/articulos/crear')}}">
     
     @csrf
     <div class="row">
         
         <div class="col-md-4">
             <div class="form-group">
-                <label for="archivo" class="form-label">Archivo CSV</label>
+                <label for="archivo" class="form-label">Archivo CSV / Excel</label>
                 <input type="file" id="file" name="file" class="form-control" />
             </div>
         </div>
@@ -39,7 +39,7 @@
 <div class="row">
     <div class="col-md-12" style="text-align: center;">
         
-        <a href="{{url('administracion/articulos')}}">
+        <a href="{{url('almacen-general/articulos')}}">
             <button class="btn btn-danger ">
                 Cancelar
             </button>
@@ -49,8 +49,6 @@
         </button>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
 
@@ -114,7 +112,7 @@
                     processData: false,
                     success: function(response){
                         alert(response.message);
-                        window.location.href = '{{url('administracion/articulos')}}';
+                        window.location.href = '{{url('almacen-general/articulos')}}';
                     },
                     error: function (request, status, error) {
                         jsonValue = jQuery.parseJSON( request.responseText );

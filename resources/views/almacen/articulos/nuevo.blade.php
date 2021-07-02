@@ -2,7 +2,7 @@
 
 @section('title_right')
 <!-- Boton aniadir -->
-<a href="{{url('administracion/articulos')}}">
+<a href="{{url('almacen-general/articulos')}}">
     <button type="button" class="btn btn-outline-info btn-sm">
       Regresar
     </button>
@@ -12,7 +12,7 @@
 
 @section('main_div')
 	
-    <form id="nuevo-articulo" method="post" action="{{url('/administracion/articulos/crear')}}" enctype='multipart/form-data'>
+    <form id="nuevo-articulo" method="post" action="{{url('/almacen-general/articulos/crear')}}" enctype='multipart/form-data'>
     
     @csrf
 
@@ -70,7 +70,7 @@
 <div class="row">
     <div class="col-md-12" style="text-align: center;">
         
-        <a href="{{url('administracion/articulos')}}">
+        <a href="{{url('almacen-general/articulos')}}">
             <button class="btn btn-danger ">
                 Cancelar
             </button>
@@ -80,8 +80,6 @@
         </button>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
 

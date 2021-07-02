@@ -16,8 +16,6 @@ class ChipsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        // faltan los middleware para validar el rol del usuario
-        // $this->middleware('tienerolde...');
     }
     //
     public function inicio(){

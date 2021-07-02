@@ -22,32 +22,20 @@ class autorizarmiddelware
     {   
         // 1) Esta declarado el permiso? 
         $permiso  =  Permisos::
-                select('permisos.*','permisosroles.rol_id as rol')
-                ->join('permisosroles','permisosroles.permiso_id','=','permisos.id')
-                ->where('permisos.identificador','=',$accion)
+                where('permisos.identificador','=',$accion)
                 ->first();
 
         if($permiso == null)
-            return redirect('/almacen/responsivas')->with('error', 'Accion no establecida en la base de datos.');
+            return redirect()->back()->with('error', 'Accion pendiente de revision.');
         
-        // 2)  ¿Obtener el rol del usuario?
-        $userid = $request->user()->id;
-        
-        $rol = Roles::
-            select('roles.valor as valor')
-            ->join('rolesusuarios','rolesusuarios.rol_id','=','roles.id')
-            ->where('rolesusuarios.usuario_id','=',$userid)
-            ->where('roles.id','=',$permiso->rol)
-            ->first()
-            ;
+        // 1.1) Hay un rol asociado a la accion?
+        $permisorol = PermisosRoles::where('permiso_id','=',$permiso->id)
+                ->first();
+        if($permisorol == null){
+            
+            $userid = $request->user()->id;
 
-        // ¿Tiene el rol requerido?
-
-        if ($rol != null) {
-                return $next($request);
-        }
-
-        $rol = Roles::
+            $rol = Roles::
             select('roles.valor as valor')
             ->join('rolesusuarios','rolesusuarios.rol_id','=','roles.id')
             ->where('rolesusuarios.usuario_id','=',$userid)
@@ -55,10 +43,43 @@ class autorizarmiddelware
             ->first()
             ;
 
-        // ¿Es Admin? 
-        if ($rol != null) {
-            return $next($request);
+            // ¿Es Admin? 
+            if ($rol != null) {
+                return $next($request);
+            }
+        }else{
+            
+            // 2)  ¿Obtener el rol del usuario?
+            $userid = $request->user()->id;
+            
+            $rol = Roles::
+                select('roles.valor as valor')
+                ->join('rolesusuarios','rolesusuarios.rol_id','=','roles.id')
+                ->where('rolesusuarios.usuario_id','=',$userid)
+                ->where('roles.id','=',$permisorol->rol_id)
+                ->first()
+                ;
+
+            // ¿Tiene el rol requerido?
+
+            if ($rol != null) {
+                    return $next($request);
+            }
+            $rol = Roles::
+                select('roles.valor as valor')
+                ->join('rolesusuarios','rolesusuarios.rol_id','=','roles.id')
+                ->where('rolesusuarios.usuario_id','=',$userid)
+                ->where('roles.valor','=','Administrador')
+                ->first()
+                ;
+
+            // ¿Es Admin? 
+            if ($rol != null) {
+                return $next($request);
+            }
         }
+
+
 
         // 3) ¿Tiene el permiso especial?
 
@@ -73,7 +94,7 @@ class autorizarmiddelware
         }
 
         // No tiene permiso especial 
-        return redirect('/administracion')->with('error', 'No tienes permiso para realizar esta accion.');
+        return redirect()->back()->with('error', 'No tienes permiso para realizar esta accion.');
     }
 
 }

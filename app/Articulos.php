@@ -13,6 +13,7 @@ class Articulos extends Model
 	protected $fillable = [
 			'subcategoria_id', 
 			'categoria_id', 
+			'cantidad_global',
 			'nombre', 
 			'imagen',
 			'status'

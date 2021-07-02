@@ -20,6 +20,7 @@ class CreateArticulosTable extends Migration
             $table->string('nombre',100);
             $table->string('imagen',255);
             $table->tinyInteger('status')->default(1);
+            $table->integer('cantidad_global')->default(0);
         });
     }
 

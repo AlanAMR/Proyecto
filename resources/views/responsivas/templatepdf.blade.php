@@ -160,7 +160,11 @@ td {
 				<td>Nº serie</td>
 				<td>{{$asig_celular->num_serie}}</td>
 				<td>Nombre plan:</td>
-				<td>{{$request->asignar_celular_plan}}</td>
+				<td>
+					@if($asig_chip != null)
+					{{$asig_chip->plan}}
+					@endif
+				</td>
 			@else
 				<td>Nº serie</td>
 				<td></td>
@@ -183,7 +187,11 @@ td {
 			@if($asig_celular != null)
 				<td colspan="2">Condiciones del equipo:</td>
 				<td>Nº Celular:</td>
-				<td>{{$request->asignar_celular_numero}}</td>
+				<td>
+					@if($asig_chip != null)
+					{{$asig_chip->numero}}
+					@endif
+				</td>
 			@else
 				<td colspan="2">Condiciones del equipo:</td>
 				<td>Nº Celular:</td>
@@ -207,7 +215,9 @@ td {
 				<td colspan="2" rowspan="3">{{$request->asignar_celular_condiciones}}</td>
 				<td>N° de chip:</td>
 				<td>
-					{{$request->asignar_celular_chip}}	
+					@if($asig_chip != null)
+					{{$asig_chip->sim}}	
+					@endif
 				</td>
 			@else
 				<td colspan="2" rowspan="3"></td>
@@ -484,7 +494,7 @@ td {
 				<td>Modelo:</td>
 				<td>{{$ret_celular->modelo}}</td>
 				<td>Nº Chip:</td>
-				<td>{{$request->retirar_celular_chip}}</td>
+				<td>{{$ret_chip->sim}}</td>
 			@else
 				<td>Modelo:</td>
 				<td></td>

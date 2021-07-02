@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Roles;
 
-
+use App\RolesUsuarios;
 class UsersController extends Controller
 {
     public function __construct()
@@ -25,6 +25,7 @@ class UsersController extends Controller
             ;
 
         return view('usuarios.index')
+            ->with('titulo','Administracion de Usuarios')
             ->with('usuarios',$usuarios); 
     }
 
@@ -80,7 +81,8 @@ class UsersController extends Controller
             "rol" => "required",
             "status" => "required"
         ]);
-        
+
+
         $cambiarpass = false;
 
         if($request->password != ""){
@@ -103,6 +105,13 @@ class UsersController extends Controller
         }
 
         $user->update();
+
+        $rolusuario = RolesUsuarios::where('usuario_id','=',$user->id)->first();
+
+        $rolusuario->rol_id = $request->rol;
+
+        $rolusuario->update();
+
 
 
         if($cambiarpass)

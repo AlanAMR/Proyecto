@@ -26,10 +26,6 @@ class Laptops extends Model
             'sistema_operativo',
             'antivirus',
             'color',
-            'usuario',
-            'password',
-            'anydesk',
-            'anydeskpassword',
             'status'
   		];
   

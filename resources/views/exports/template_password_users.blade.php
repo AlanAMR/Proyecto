@@ -1,0 +1,22 @@
+<table>
+    <thead>
+    <tr>
+        <th>Equipo_id</th>
+        <th>Tipo_id</th>
+        <th>Identificador</th>
+        <th>Sistema</th>
+        <th>Usuario</th>
+        <th>Contraseña</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>Test</td>
+            <td>Windows</td>
+            <td>test@test.com</td>
+            <td>password123</td>
+        </tr>
+    </tbody>
+</table>

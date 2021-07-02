@@ -24,10 +24,6 @@ class CreateLaptopsTable extends Migration
             $table->string('sistema_operativo',50);
             $table->string('antivirus',50);
             $table->string('color',20)->nullable();
-            $table->string('usuario',50)->nullable();
-            $table->string('password',50)->nullable();
-            $table->string('anydesk',12)->nullable();
-            $table->string('anydeskpassword',50)->nullable();
             $table->integer('status')->default(1);
         });
     }

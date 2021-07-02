@@ -13,7 +13,7 @@ class EmpresasSeeder extends Seeder
     {
         //
         DB::table('empresas')->insert([
-            'nombre' => 'Pro Code'
+            'nombre' => 'Telsa Solutions'
         ]);
 
         DB::table('sucursales')->insert([
@@ -36,6 +36,18 @@ class EmpresasSeeder extends Seeder
 
         DB::table('almacenes')->insert([
             'sucursal_id' => '1',
+            'nombre' => 'GDL Almacen Secundario',
+            'ubicacion' => 'Zapopan'
+        ]);
+
+        DB::table('almacenes')->insert([
+            'sucursal_id' => '2',
+            'nombre' => 'GDL Almacen Principal',
+            'ubicacion' => 'GDL'
+        ]);
+
+        DB::table('almacenes')->insert([
+            'sucursal_id' => '2',
             'nombre' => 'GDL Almacen Secundario',
             'ubicacion' => 'Zapopan'
         ]);

@@ -89,10 +89,11 @@
                                 <a href="{{url('almacen/responsivas/verpdf/'.$responsiva->id)}}" target="_blank">
                                     <button class="btn btn-success btn-sm" style="margin-right: 5px">Ver PDF <i class="fas fa-file-pdf"></i></button> 
                                 </a>
-
+                                <!--
                                 <a href="{{url('almacen/responsivas/descargarpdf/'.$responsiva->id)}}">
                                     <button class="btn btn-default btn-sm">Descargar PDF <i class="fas fa-download"></i></i></button> 
                                 </a>
+                            -->
                             </div>
 
 

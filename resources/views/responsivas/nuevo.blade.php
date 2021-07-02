@@ -278,22 +278,13 @@
 
         <div class="col-md-4">
             <div class="form-group">
-                <label for="asignar_celular_plan" class="form-label">Nombre del plan</label>
-                <input name="asignar_celular_plan" class="form-control" placeholder="Plan...">
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="asignar_celular_numero" class="form-label">Numero de celular</label>
-                <input name="asignar_celular_numero" class="form-control" placeholder="Numero celular...">
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="asignar_celular_chip" class="form-label">Numero de chip</label>
-                <input name="asignar_celular_chip" class="form-control" placeholder="Numero de Chip...">
+                <label for="asignar_celular_chip" class="form-label">Chip</label>
+                <input name="asignar_celular_chip" class="form-control" list="options_asignar_celular_chip" id="datalist-asignar_celular_chip" placeholder="Sin seleccionar..." autocomplete="off">
+                <datalist id="options_asignar_celular_chip">
+                  @foreach($chips_asig as $chi)
+                    <option value="{{$chi->id}}| {{$chi->numero}}| {{$chi->sim}}"></option>
+                  @endforeach
+                </datalist>
             </div>
         </div>
         
@@ -325,8 +316,13 @@
 
         <div class="col-md-4">
             <div class="form-group">
-                <label for="retirar_celular_chip" class="form-label">Numero de chip</label>
-                <input name="retirar_celular_chip" class="form-control" placeholder="Numero de Chip...">
+                <label for="retirar_celular_chip" class="form-label">Chip</label>
+                <input name="retirar_celular_chip" class="form-control" list="options_retirar_celular_chip" id="datalist-retirar_celular_chip" placeholder="Sin seleccionar..." autocomplete="off">
+                <datalist id="options_retirar_celular_chip">
+                  @foreach($chips_ret as $chi)
+                    <option value="{{$chi->id}}| {{$chi->numero}}| {{$chi->sim}}"></option>
+                  @endforeach
+                </datalist>
             </div>
         </div>
       <!-- Por si se requiere despues

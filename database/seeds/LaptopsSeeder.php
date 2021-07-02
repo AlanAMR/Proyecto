@@ -19,11 +19,7 @@ class LaptopsSeeder extends Seeder
             'procesador' => 'Core I5',
             'sistema_operativo' => 'Windows 7 Pro',
             'antivirus' => 'Microsoft Security Essentials',
-            'color' => 'Blanco',
-            'usuario' => 'user',
-            'password' =>'',
-            'anydesk' => '321 543 765',
-            'anydeskpassword' => ''
+            'color' => 'Blanco'
         ]);
 
         DB::table('laptops')->insert([
@@ -33,11 +29,7 @@ class LaptopsSeeder extends Seeder
             'procesador' => 'Core I5',
             'sistema_operativo' => 'Windows 7 Pro',
             'antivirus' => 'Microsoft Security Essentials',
-            'color' => 'Gris',
-            'usuario' => 'user',
-            'password' =>'',
-            'anydesk' => '645 827 132',
-            'anydeskpassword' => ''
+            'color' => 'Gris'
         ]);
 
         DB::table('laptops')->insert([
@@ -47,11 +39,28 @@ class LaptopsSeeder extends Seeder
             'procesador' => 'Core I5',
             'sistema_operativo' => 'Windows 7 Pro',
             'antivirus' => 'Microsoft Security Essentials',
-            'color' => 'Negro',
-            'usuario' => 'user',
-            'password' =>'',
-            'anydesk' => '123 123 123',
-            'anydeskpassword' => ''
+            'color' => 'Negro'
         ]);
+
+        // computadoras
+        DB::table('computadoras')->insert([
+            'num_serie' => 'CompuTest1',
+            'marca' => 'Lenovo',
+            'modelo' => 'T430',
+            'procesador' => 'Core I5',
+            'sistema_operativo' => 'Windows 7 Pro',
+            'antivirus' => 'Microsoft Security Essentials'
+        ]);
+
+
+        DB::table('computadoras')->insert([
+            'num_serie' => 'CompuTest2',
+            'marca' => 'Lenovo',
+            'modelo' => 'T430',
+            'procesador' => 'Core I5',
+            'sistema_operativo' => 'Windows 7 Pro',
+            'antivirus' => 'Microsoft Security Essentials'
+        ]);
+
     }
 }

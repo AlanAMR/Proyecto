@@ -12,13 +12,14 @@
 
 @section('main_div')
 
-<form id="create-laptop" method="post" action="{{url('almacen/laptops/crear')}}">
+<form id="update-laptop" method="post" action="{{url('almacen/laptops/actualizar')}}">
     
     @csrf
 
 
     <div class="row">
         
+        <input type="hidden" name="id" value="{{$laptop->id}}">
        
 
         <div class="col-md-4">
@@ -66,21 +67,6 @@
             </div>
         </div>
 
-
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="usuario" class="form-label">Usuario</label>
-                <input type="text" name="usuario" class="form-control" value="{{$laptop->usuario}}">
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="text" name="password" class="form-control" value="{{$laptop->password}}">
-            </div>
-        </div>
-
         <div class="col-md-4">
             <div class="form-group">
                 <label for="color" class="form-label">Color</label>
@@ -89,19 +75,6 @@
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="anydesk" class="form-label">Any Desk</label>
-                <input type="text" name="anydesk" class="form-control" value="{{$laptop->anydesk}}">
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="anydeskpassword" class="form-label">Contraseña (Any Desk)</label>
-                <input type="text" name="anydeskpassword" class="form-control" value="{{$laptop->anydeskpassword}}">
-            </div>
-        </div>
 
     </div>
 
@@ -112,11 +85,16 @@
 <div class="row">
     <div class="col-md-12" style="text-align: center;">
         
+        
         <a href="{{url('almacen/laptops')}}">
             <button class="btn btn-outline-danger btn-sm">
-                Regresar
+                Regresar    
             </button>
         </a>
+
+        <button class="btn btn-outline-success btn-sm" onclick="document.getElementById('update-laptop').submit();">
+            Actualizar informacion
+        </button>
     </div>
 </div>
 

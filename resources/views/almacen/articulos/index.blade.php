@@ -2,13 +2,13 @@
 
 @section('title_right')
 <!-- Boton aniadir -->
-<a href="{{url('administracion/articulos/nuevo')}}">
+<a href="{{url('almacen-general/articulos/nuevo')}}">
     <button type="button" class="btn btn-outline-primary btn-sm">
       Agregar Articulo <i class="fa fa-plus-circle"></i>
     </button>
 </a>
 
-<a href="{{url('administracion/articulos/cargar-csv')}}">
+<a href="{{url('almacen-general/articulos/cargar-csv')}}">
     <button type="button" class="btn btn-outline-primary btn-sm">
       Agregar Multiples Articulos <i class="fa fa-plus-circle"></i>
     </button>
@@ -25,6 +25,7 @@
                     <th>ID</th>
                     <th>Imagen</th>
                     <th>Nombre</th>
+                    <th>Stock</th>
                     <th>Categoria</th>
                     <th>Subcategoria</th>
                     <th>Opciones</th>
@@ -46,12 +47,13 @@
                             </center>
                         </th>
                         <th>{{$articulo->nombre}}</th>
+                        <th>{{$articulo->cantidad_global}}</th>
                         <th>{{$articulo->categoria}}</th>
                         <th>{{$articulo->subcategoria}}</th>
                         <th>
                             <div class="btn-group" role="group" aria-label="Basic example">
 
-                                <a href="{{url('administracion/articulos/modificar/'.$articulo->id)}}">
+                                <a href="{{url('almacen-general/articulos/modificar/'.$articulo->id)}}">
                                     <button class="btn btn-success btn-sm" style="margin-right: 5px">Modificar datos<i class="fas fa-file-pdf"></i></button> 
                                 </a>
 
@@ -75,7 +77,7 @@
 
                                         <hr>
                                         
-                                        <form  method="post" action="{{url('/administracion/articulos/eliminar')}}">
+                                        <form  method="post" action="{{url('/almacen-general/articulos/eliminar')}}">
                                             @csrf
                                             <div class="input-group">
                                                 <input type="hidden" name="id" value="{{$articulo->id}}">
@@ -105,6 +107,7 @@
                     <th>ID</th>
                     <th>Imagen</th>
                     <th>Nombre</th>
+                    <th>Stock</th>
                     <th>Categoria</th>
                     <th>Subcategoria</th>
                     <th>Opciones</th>

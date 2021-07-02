@@ -10,13 +10,14 @@ use App\SugerenciasCelularesModelos;
 use App\SugerenciasCelularesCompanias;
 use App\Colores;
 
+use App\Exports\ArchivoCelulares;
+use Maatwebsite\Excel\Facades\Excel;
+
 class CelularesController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-        // faltan los middleware para validar el rol del usuario
-        // $this->middleware('tienerolde...');
     }
     //
     public function inicio(){
@@ -133,5 +134,17 @@ class CelularesController extends Controller
         $celular->update();
 
         return redirect('/almacen/celulares')->with('success','Se elimino con exito el celular: '.$celular->num_serie);
+    }
+
+
+    public function cargar_csv(){
+        return view('celulares.cargar_csv')
+            ->with('titulo','Cargar Celulares desde Archivo CSV / EXCEL.')
+            ;
+    }
+
+    public function exportar_plantilla(){
+        $export = new ArchivoCelulares;
+        return Excel::download($export, 'ejemplo.xlsx');
     }
 }

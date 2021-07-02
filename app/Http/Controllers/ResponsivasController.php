@@ -24,14 +24,15 @@ use App\Laptops;
 use App\Celulares;
 use App\Chips;
 
+use Illuminate\Support\Facades\Storage;
+
+
 class ResponsivasController extends Controller
 {
     //
     public function __construct()
     {
         $this->middleware('auth');
-        // faltan los middleware para validar el rol del usuario
-        // $this->middleware('tienerolde...');
     }
 
     // Devuelve la vista inicial de la seccion de responsivas
@@ -140,6 +141,8 @@ class ResponsivasController extends Controller
     	$celulares_asig = Celulares::where('status','=','1')->get();
         $celulares_ret = Celulares::where('status','=','2')->get();
 
+        $chips_asig = Chips::where('status','=','1')->get();
+        $chips_ret = Chips::where('status','=','2')->get();
     	$usuarios_solicitan = user::all();
 
     	$usuarios_entregan = user::
@@ -158,6 +161,8 @@ class ResponsivasController extends Controller
             ->with('laptops_ret',$laptops_ret)
     		->with('celulares_asig',$celulares_asig)
             ->with('celulares_ret',$celulares_ret)
+            ->with('chips_asig',$chips_asig)
+            ->with('chips_ret',$chips_ret)
     		->with('usuarios_solicitan',$usuarios_solicitan)
     		->with('usuarios_entregan',$usuarios_entregan)
     		->with('usuarios_autorizan',$usuarios_autorizan)
@@ -190,6 +195,9 @@ class ResponsivasController extends Controller
         $ret_laptop = null;
         $ret_celular = null;
         $asig_celular = null;
+
+        $asig_chip = null;
+        $ret_chip = null;
 		
 		try{
 			$responsiva = new Responsivas();
@@ -299,6 +307,43 @@ class ResponsivasController extends Controller
 	    		$operacion = true;
 	    	}
 
+
+            if($request->asignar_celular_chip){
+
+                $exploded = explode("|", $request->asignar_celular_chip);
+                $id_asig_chip = $exploded[0];
+
+                $resins = new ResponsivasInsumos();
+                $resins->responsiva_id = $responsiva->id;
+                $resins->responsiva_movimiento_id = 1;
+                $resins->tipo_insumo_id = 3;
+                $resins->insumo_id = $id_asig_chip;
+                $resins->comentarios = "";
+
+                $resins->save();
+
+                $asig_chip = Chips::findOrFail($id_asig_chip);
+            }
+
+
+            if($request->retirar_celular_chip){
+
+                $exploded = explode("|", $request->retirar_celular_chip);
+                $id_ret_chip = $exploded[0];
+
+                $resins = new ResponsivasInsumos();
+                $resins->responsiva_id = $responsiva->id;
+                $resins->responsiva_movimiento_id = 2;
+                $resins->tipo_insumo_id = 3;
+                $resins->insumo_id = $id_ret_chip;
+                $resins->comentarios = "";
+
+                $resins->save();
+
+                $ret_chip = Chips::findOrFail($id_ret_chip);
+            }
+
+            
 			// Creacion del PDF	        
             $mpdf = new \Mpdf\Mpdf([
                 'mode' => 'utf-8', 
@@ -319,6 +364,10 @@ class ResponsivasController extends Controller
                 ->with('ret_laptop',$ret_laptop)
                 ->with('asig_celular',$asig_celular)
                 ->with('ret_celular',$ret_celular)
+
+                ->with('asig_chip',$asig_chip)
+                ->with('ret_chip',$ret_chip)
+
                 ->with('info_usuario',$info_usuario)
                 ->with('solicita',$usuario_solicita[1])
                 ->with('autoriza',$usuario_autoriza[1])
@@ -364,6 +413,16 @@ class ResponsivasController extends Controller
             if($ret_celular != null){
                 $ret_celular->status = 1;
                 $ret_celular->update();
+            }
+
+            if($asig_chip != null){
+                $asig_chip->status = 2;
+                $asig_chip->update();
+            }
+
+            if($ret_chip != null){
+                $ret_chip->status = 1;
+                $ret_chip->update();
             }
 
 
@@ -432,7 +491,8 @@ class ResponsivasController extends Controller
             return redirect()->back()->with('error','No se pudo encontrar el archivo!');
 
 
-    	$file = asset().$archivo->ruta.'/'.$archivo->nombre;
+    	$file = asset($archivo->ruta.'/'.$archivo->nombre);
+
 
 		$headers = array(
 		          'Content-Type: application/pdf',

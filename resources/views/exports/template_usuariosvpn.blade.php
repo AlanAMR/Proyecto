@@ -1,0 +1,18 @@
+<table>
+    <thead>
+    <tr>
+        <th>Conexion_id</th>
+        <th>Identificador</th>
+        <th>Usuario</th>
+        <th>Contraseña</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Test</td>
+            <td>Test</td>
+            <td>password123</td>
+        </tr>
+    </tbody>
+</table>

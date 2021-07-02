@@ -1,0 +1,20 @@
+<table>
+    <thead>
+    <tr>
+        <th>Empleado_id</th>
+        <th>Servidor_id</th>
+        <th>Identificador</th>
+        <th>Correo</th>
+        <th>Contraseña</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>test</td>
+            <td>test@test.com</td>
+            <td>password123</td>
+        </tr>
+    </tbody>
+</table>

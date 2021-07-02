@@ -30,7 +30,7 @@ class SucursalesController extends Controller
 
     public function nuevo(){
 
-    	$empresas = Empresas::all();
+    	$empresas = Empresas::where('status','!=','0')->get();
 
     	return view('admin.sucursales.nuevo')
     		->with('empresas',$empresas)
@@ -93,7 +93,7 @@ class SucursalesController extends Controller
     	$sucursal = sucursales::findOrFail($id);
 
         $empresa = Empresas::findOrFail($sucursal->empresa_id);
-        $empresas = Empresas::all();
+        $empresas = Empresas::where('status','!=','0')->get();
 
     	return view('admin.sucursales.modificar')
     		->with('sucursal',$sucursal)

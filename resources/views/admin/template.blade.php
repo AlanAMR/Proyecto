@@ -23,6 +23,9 @@
     <!-- Custom styles for this page -->
     <link href="{{asset('admin_theme/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet')}}">
 
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{asset('admin_theme/vendor/jquery/jquery.min.js')}}"></script>
+
 </head>
 
 <body id="page-top">
@@ -53,28 +56,95 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+
             <!-- Heading -->
             <div class="sidebar-heading">
-                Almacen
-            </div>
+                Sistemas
+            </div>  
 
             <!-- Nav Item - Paginas del almacen de TI  -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAlmacen"
-                    aria-expanded="true" aria-controls="collapseAlmacen">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAlmacenti"
+                    aria-expanded="true" aria-controls="collapseAlmacenti">
                     <i class="fas fa-fw fa-boxes"></i>
                     <span>Almacen TI</span>
                 </a>
-                <div id="collapseAlmacen" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseAlmacenti" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Sistemas</h6>
                         <a class="collapse-item" href="{{url('/almacen/responsivas')}}">Responsivas</a>
                         <a class="collapse-item" href="{{url('/almacen/laptops')}}">Laptops</a>
+                            <a class="collapse-item" href="{{url('/almacen/computadoras')}}">Computadoras</a>
                         <a class="collapse-item" href="{{url('/almacen/celulares')}}">Celulares</a>
                         <a class="collapse-item" href="{{url('/almacen/chips')}}">Chips</a>
                     </div>
                 </div>
             </li>
+
+            <!-- Nav Item - Paginas del almacen de TI  -->
+            <li class="nav-item">
+                
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsepass"
+                    aria-expanded="true" aria-controls="collapsepass">
+                    <i class="fas fa-fw fa-unlock-alt"></i>
+                    <span>Contraseñas, Accesos y Licencias</span>
+                </a>
+
+                <div id="collapsepass" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        
+
+                        <h6 class="collapse-header">Contraseñas</h6>
+                        
+                            <a class="collapse-item" href="{{url('sistemas/accesos/sistemaop')}}">Sistema operativo</a>
+                            <a class="collapse-item" href="{{url('sistemas/accesos/anydesk')}}">Any Desk</a>
+                            <a class="collapse-item" href="{{url('sistemas/accesos/bitlocker')}}">Bitlocker</a>
+                            <a class="collapse-item" href="{{url('sistemas/accesos/contpaq')}}">Contpaq</a>
+                        <h6 class="collapse-header">Usuarios</h6>                            
+                            <a class="collapse-item" href="{{url('sistemas/accesos/correos')}}">Correos Electronicos</a>
+                            <a class="collapse-item" href="{{url('sistemas/accesos/carpetas')}}">Carpetas Compartidas</a>
+                            <a class="collapse-item" href="{{url('sistemas/accesos/dbms')}}">Usuarios DBMS</a>
+                            <a class="collapse-item" href="{{url('sistemas/accesos/ras')}}">Usuarios RAS / RDP</a>
+                            <a class="collapse-item" href="{{url('sistemas/accesos/vpn')}}">Usuarios VPN</a>
+                            <a class="collapse-item" href="{{url('sistemas/accesos/ftp')}}">Usuarios FTP</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Paginas del almacen de TI  -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseserv"
+                    aria-expanded="true" aria-controls="collapseserv">
+                    <i class="fas fa-fw fa-server"></i>
+                    <span>Servidores</span>
+                </a>
+                <div id="collapseserv" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Servicios</h6>
+                            <a class="collapse-item" href="{{url('sistemas/servidores')}}">Servidores</a>
+
+                        <h6 class="collapse-header">Servicios</h6>
+                            <a class="collapse-item" href="{{url('sistemas/conexiones/smtp')}}">Conexiones SMTP</a>
+                            <a class="collapse-item" href="{{url('sistemas/conexiones/dbms')}}">Conexiones DBMS</a>
+                            <a class="collapse-item" href="{{url('sistemas/conexiones/smb')}}">Conexiones SMB / CIFS</a>
+                            <a class="collapse-item" href="{{url('sistemas/conexiones/ras')}}">Conexiones RAS / RDP / SSH</a>
+                            <a class="collapse-item" href="{{url('sistemas/conexiones/vpn')}}">Conexiones VPN</a>
+                            <a class="collapse-item" href="{{url('sistemas/conexiones/ftp')}}">Conexiones FTP</a>
+                    </div>
+                </div>
+            </li>
+
+
+            
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Almacen
+            </div>
+
             
 
             <!-- Nav Item - Paginas de el almacen vehicular -->
@@ -87,8 +157,8 @@
                 <div id="collapseAlmacen-ve" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Vehiculos</h6>
-                        <a class="collapse-item" href="{{url('/almacen-vehicular/responsivas')}}">Responsivas</a>
-                        <a class="collapse-item" href="{{url('/almacen-vehicular/vehiculos')}}">Vehiculos</a>
+                        <a class="collapse-item" href="{{url('/almacen-vehicular/responsivas')}}">*Responsivas</a>
+                        <a class="collapse-item" href="{{url('/almacen-vehicular/vehiculos')}}">*Vehiculos</a>
                     </div>
                 </div>
             </li>
@@ -106,12 +176,15 @@
                 <div id="collapseAlmacen-ge" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Movimientos</h6>
-                        <a class="collapse-item" href="{{url('/almacen-general/reportes')}}">Reportes</a>
-                        <a class="collapse-item" href="{{url('/almacen-general/entradas')}}">Entradas</a>
-                        <a class="collapse-item" href="{{url('/almacen-general/salidas')}}">Salidas</a>
-                        <a class="collapse-item" href="{{url('/almacen-general/inventario-fisico')}}">Inventario Fisico</a>
+                        <a class="collapse-item" href="{{url('/almacen-general/entradas')}}">*Entradas</a>
+                        <a class="collapse-item" href="{{url('/almacen-general/salidas')}}">*Salidas</a>
+                        <a class="collapse-item" href="{{url('/almacen-general/inventario-fisico')}}">*Inventario Fisico</a>
                         <h6 class="collapse-header">Articulos:</h6>
-                        <a class="collapse-item" href="{{url('/administracion/articulos')}}">Articulos</a>
+                        <a class="collapse-item" href="{{url('/almacen-general/articulos')}}">Articulos</a>
+                        <a class="collapse-item" href="{{url('/almacen-general/categorias')}}">Categorias</a>
+                        <a class="collapse-item" href="{{url('/almacen-general/subcategorias')}}">Subcategorias</a>
+                        <h6 class="collapse-header">Reportes:</h6>
+                        <a class="collapse-item" href="{{url('/almacen-general/reportes')}}">*Reportes</a>
                     </div>
                 </div>
             </li>
@@ -126,18 +199,19 @@
 
             <!-- Nav Item - Paginas de la gestion de personal -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers-ge"
-                    aria-expanded="true" aria-controls="collapseUsers-ge">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePersonal-ge"
+                    aria-expanded="true" aria-controls="collapsePersonal-ge">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Gestion de Personal</span>
                 </a>
-                <div id="collapseUsers-ge" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapsePersonal-ge" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Empleados</h6>
-                        <a class="collapse-item" href="{{url('/rh/empleados')}}">Empleados activos</a>
-                        <a class="collapse-item" href="{{url('/rh/empleados-inactivos')}}">Empleados inactivos</a>
-                        <h6 class="collapse-header">Colaboradores</h6>
-                        <a class="collapse-item" href="{{url('/rh/colaboradoes')}}">Colaboradores</a>
+                        <h6 class="collapse-header">Personal</h6>
+                        <a class="collapse-item" href="{{url('/rh/empleados')}}">*Empleados</a>
+                        <h6 class="collapse-header">Bajas</h6>
+                        <a class="collapse-item" href="{{url('/rh/bajas')}}">Historico de Bajas</a>
+                        <h6 class="collapse-header">Otros</h6>
+                        <a class="collapse-item" href="{{url('/rh/horarios')}}">Horarios</a>
                     </div>
                 </div>
             </li>
@@ -152,9 +226,9 @@
                 <div id="collapseUsers-ge" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Usuarios y permisos</h6>
-                        <a class="collapse-item" href="{{url('/administracion/usuarios')}}">Usuarios</a>
+                        <a class="collapse-item" href="{{url('/administracion/usuarios')}}">*Usuarios</a>
                         <a class="collapse-item" href="{{url('/administracion/roles')}}">Roles</a>
-                        <a class="collapse-item" href="{{url('/administracion/permisosesp')}}">Permisos Especiales</a>
+                        <a class="collapse-item" href="{{url('/administracion/permisos')}}">Permisos Especiales</a>
                     </div>
                 </div>
             </li>
@@ -177,12 +251,26 @@
                 <div id="collapseconfig" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{{url('administracion/configuracion/principal')}}">Pagina Principal</a>
-                        <a class="collapse-item" href="{{url('administracion/configuracion/correos')}}">Correos</a>
+                        <a class="collapse-item" href="{{url('administracion/configuracion/principal')}}">*Pagina Principal</a>
+                        <a class="collapse-item" href="{{url('administracion/configuracion/correos')}}">*Correos</a>
                         <h6 class="collapse-header">Empresas:</h6>
                         <a class="collapse-item" href="{{url('administracion/empresas')}}">Empresas</a>
+                        <a class="collapse-item" href="{{url('administracion/areas')}}">Areas</a>
+                        <a class="collapse-item" href="{{url('administracion/puestos')}}">Puestos</a>
                         <a class="collapse-item" href="{{url('administracion/sucursales')}}">Sucursales</a>
                         <a class="collapse-item" href="{{url('administracion/almacenes')}}">Almacenes</a>
+                    </div>
+                </div>
+
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsedemos"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Demos Y Pruebas</span>
+                </a>
+                <div id="collapsedemos" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Otros</h6>
+                        <a class="collapse-item" href="{{url('demos')}}">Demos / Pruebas</a>
                     </div>
                 </div>
             </li>
@@ -320,7 +408,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src=""
+                                        <img class="rounded-circle" src="{{asset('img/error-img.png')}}"
                                             alt="">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
@@ -332,7 +420,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src=""
+                                        <img class="rounded-circle" src="{{asset('img/error-img.png')}}"
                                             alt="">
                                         <div class="status-indicator"></div>
                                     </div>
@@ -344,7 +432,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src=""
+                                        <img class="rounded-circle" src="{{asset('img/error-img.png')}}"
                                             alt="">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
@@ -501,8 +589,7 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('admin_theme/vendor/jquery/jquery.min.js')}}"></script>
+    
     <script src="{{asset('admin_theme/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->

@@ -5,10 +5,10 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use DB;
 use App\Articulos;
 use App\Categorias;
 use App\Subcategorias;
-
 use App\Imports\DataImport;
 
 use Maatwebsite\Excel\Facades\Excel;
@@ -46,10 +46,11 @@ class ArticulosController extends Controller
 
     public function procesar_csv(){
 
-    	$array = (new DataImport)->toArray('importar/chips.xlsx');
+    	$array = (new DataImport)->toArray('importar/articulos.xlsx');
 
+    	DB::beginTransaction();
+    	
     	try{
-
     		$isFirst = true;
 
     		foreach ($array as $hoja) {
@@ -95,8 +96,11 @@ class ArticulosController extends Controller
 			    	}
 			    }
 			}
+
+			DB::commit();
 	    	 
     	}catch(Exception $ex){
+    		DB::rollBack();
     		return response()->json(['error' => 'No se pudo procesar el archivo'],500);
     	}
     	return response()->json(['message' => 'Archivo procesado con exito']);

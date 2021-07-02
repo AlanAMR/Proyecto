@@ -12,14 +12,8 @@
 
 @section('main_div')
 
-<form id="create-laptop" method="post" action="{{url('almacen/laptops/crear')}}">
-    
-    @csrf
-
 
     <div class="row">
-        
-       
 
         <div class="col-md-4">
             <div class="form-group">
@@ -66,21 +60,6 @@
             </div>
         </div>
 
-
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="usuario" class="form-label">Usuario</label>
-                <input type="text" name="usuario" class="form-control" value="{{$laptop->usuario}}">
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="text" name="password" class="form-control" value="{{$laptop->password}}">
-            </div>
-        </div>
-
         <div class="col-md-4">
             <div class="form-group">
                 <label for="color" class="form-label">Color</label>
@@ -89,26 +68,189 @@
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="anydesk" class="form-label">Any Desk</label>
-                <input type="text" name="anydesk" class="form-control" value="{{$laptop->anydesk}}">
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="anydeskpassword" class="form-label">Contraseña (Any Desk)</label>
-                <input type="text" name="anydeskpassword" class="form-control" value="{{$laptop->anydeskpassword}}">
-            </div>
-        </div>
 
     </div>
 
     <hr>
 
-</form>
+    @if($passsisop->count() >0)
+    <div class="row">
+        <label><b>Cuentas de usuario:</b></label>
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($passsisop as $sisop)
+                        <tr>
+                            <th>{{$sisop->id}}</th>
+                            <th>{{$sisop->usuario}}</th>
+                            <th>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    
+                                    <a href="{{url('sistemas/accesos/sistemaop/ver/'.$sisop->id)}}">
+                                        <button class="btn btn-info btn-sm" style="margin-right: 5px">Ver mas Detalles <i class="far fa-eye"></i></button> 
+                                    </a>
 
+                                </div>
+
+
+                            </th>
+                        </tr>
+                    @endforeach
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Opciones</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    @endif
+
+    @if($passanydesk->count() >0)
+    <div class="row">
+        <label><b>Cuentas de Any Desk:</b></label>
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($passanydesk as $any)
+                        <tr>
+                            <th>{{$any->id}}</th>
+                            <th>{{$any->anydesk}}</th>
+                            <th>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    
+                                    <a href="{{url('sistemas/accesos/anydesk/ver/'.$any->id)}}">
+                                        <button class="btn btn-info btn-sm" style="margin-right: 5px">Ver mas Detalles <i class="far fa-eye"></i></button> 
+                                    </a>
+
+                                </div>
+
+
+                            </th>
+                        </tr>
+                    @endforeach
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Opciones</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    @endif
+
+    @if($passbitlocker->count() >0)
+    <div class="row">
+        <label><b>Claves de Bitlocker:</b></label>
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Clave</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($passbitlocker as $bit)
+                        <tr>
+                            <th>{{$bit->id}}</th>
+                            <th>{{$bit->clave}}</th>
+                            <th>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    
+                                    <a href="{{url('sistemas/accesos/bitlocker/ver/'.$bit->id)}}">
+                                        <button class="btn btn-info btn-sm" style="margin-right: 5px">Ver mas Detalles <i class="far fa-eye"></i></button> 
+                                    </a>
+
+                                </div>
+
+
+                            </th>
+                        </tr>
+                    @endforeach
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Clave</th>
+                        <th>Opciones</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    @endif
+
+    @if($responsivas->count() >0)
+    <div class="row">
+        <label><b>Responsivas:</b></label>
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Movimiento</th>
+                        <th>Fecha</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($responsivas as $resp)
+                        <tr>
+                            <th>{{$resp->id}}</th>
+                            <th>{{$resp->movimiento}}</th>
+                            <th>{{$resp->fecha}}</th>
+                            <th>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    
+                                    <a href="{{url('almacen/responsivas/ver/'.$resp->id)}}">
+                                        <button class="btn btn-info btn-sm" style="margin-right: 5px">Ver mas Detalles <i class="far fa-eye"></i></button> 
+                                    </a>
+
+                                </div>
+                            </th>
+                        </tr>
+                    @endforeach
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Movimiento</th>
+                        <th>Fecha</th>
+                        <th>Opciones</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    @endif
+
+    
 <div class="row">
     <div class="col-md-12" style="text-align: center;">
         

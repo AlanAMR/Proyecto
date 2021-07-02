@@ -94,7 +94,7 @@
 <div class="row">
     <div class="col-md-12" style="text-align: center;">
         
-        <a href="{{url('almacen/celulares')}}">
+        <a href="{{url('administracion/usuarios')}}">
             <button class="btn btn-danger ">
                 Cancelar
             </button>

@@ -10,21 +10,30 @@ use App\SugerenciasLaptopsProcesadores;
 use App\SugerenciasLaptopsSO;
 use App\SugerenciasLaptopsAntivirus;
 use App\Colores;
-
+use App\PassSisOp;
+use App\PassAnyDesk;
+use App\Responsivas;
+use App\ResponsivasInsumos;
+use App\PassBitlocker;
+use Illuminate\Support\Facades\Crypt;
+use DB;
+use App\Exports\ArchivoLaptops;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LaptopsController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-        // faltan los middleware para validar el rol del usuario
-        // $this->middleware('tienerolde...');
     }
     
     public function inicio(){
     	
     	$titulo = "Todas las Laptops";
-    	$laptops = Laptops::all()->where('status','!=','0');
+    	$laptops = Laptops::
+            where('laptops.status','!=','0')
+            ->get()
+            ;
     	
 
     	return view('laptops.index')
@@ -37,8 +46,36 @@ class LaptopsController extends Controller
         
         $laptop = Laptops::findOrFail($id);
 
+        $passsisop = PassSisOp::
+            where('equipo_id','=',$laptop->id)
+            ->where('tipo','=','3')
+            ->get();
+
+        $passanydesk = PassAnyDesk::
+            where('equipo_id','=',$laptop->id)
+                ->where('tipo','=','3')
+                ->get();
+
+        $passbitlocker = PassBitlocker::
+            where('equipo_id','=',$laptop->id)
+                ->where('tipo','=','3')
+                ->get();
+
+        $responsivasInsumos = ResponsivasInsumos::
+            select('responsivas_insumos.id as id','responsivas_movimientos.valor as movimiento','tipos_insumos.valor as tipo_insumo','responsivas_insumos.insumo_id as insumo_id','responsivas.created_at as fecha')
+            ->join('responsivas','responsivas_insumos.responsiva_id','=','responsivas.id')
+            ->join('responsivas_movimientos','responsivas_movimientos.id','=','responsivas_insumos.responsiva_movimiento_id')
+            ->join('tipos_insumos','responsivas_insumos.tipo_insumo_id','=','tipos_insumos.id')
+            ->where('tipos_insumos.valor','=','Laptop')
+            ->where('responsivas_insumos.insumo_id','=',$laptop->id)
+            ->get();
+
         return view('laptops.ver')
             ->with('laptop',$laptop)
+            ->with('passsisop',$passsisop)
+            ->with('passanydesk',$passanydesk)
+            ->with('passbitlocker',$passbitlocker)
+            ->with('responsivas',$responsivasInsumos)
             ->with('titulo','Telsacel | Laptop '.$laptop->$id)
         ;
 
@@ -83,6 +120,10 @@ class LaptopsController extends Controller
 
         //anydesk
         //anydeskpassword
+        DB::beginTransaction();
+
+        try{
+
 
         $laptop = new Laptops();
 
@@ -94,22 +135,50 @@ class LaptopsController extends Controller
         $laptop->antivirus = $request->antivirus;
 
         $laptop->color = $request->color;
-        $laptop->usuario = $request->usuario;
-        $laptop->password = $request->password;
+
+        $laptop->save();
+
+        $passsisop = new PassSisOp();
+
+        //añadir passsisop
+        $passsisop->equipo_id = $laptop->id;
+        $passsisop->tipo = 3;
+        $passsisop->sistema = $request->so;
+        $passsisop->identificador = $request->num_serie;
+        $passsisop->usuario = $request->usuario;
+        $passsisop->password =  Crypt::encryptString($request->password);
+
+        $passsisop->save();
+
+        $passanydesk = new PassAnyDesk();
+        $passanydesk->anydesk = '';
+        
+        $passanydesk->equipo_id = $laptop->id;
+        $passanydesk->tipo = 3;
+        $passanydesk->identificador = $request->num_serie;
 
         if(isset($request->anydesk)){
             if($request->anydesk != ''){
-                $laptop->anydesk = $request->anydesk;
+                $passanydesk->anydesk = $request->anydesk;
             }
         }
 
+        $passanydesk->password = '';
         if(isset($request->anydeskpassword)){
             if($request->anydeskpassword != ''){
-                $laptop->anydeskpassword = $request->anydeskpassword;
+                $passanydesk->password = Crypt::encryptString($request->contrasenia);
             }
         }
 
-        $laptop->save();
+        $passanydesk->save();
+
+        }catch(Exception $ex){
+            DB::rollBack();
+            return redirect()->back()
+            ->with('error','Error al añadir la laptop');
+        }
+
+        DB::commit();
 
         return redirect('/almacen/laptops/ver/'.$laptop->id)
             ->with('success','Se añadio con exito la laptop: '.$laptop->id);
@@ -149,10 +218,7 @@ class LaptopsController extends Controller
             'procesador' => 'required',
             'so' => 'required',
             'antivirus' => 'required',
-
-            'color' => 'required',
-            'usuario' => 'required',
-            'password' => 'required'
+            'color' => 'required'
         ]);
 
         //anydesk
@@ -160,28 +226,14 @@ class LaptopsController extends Controller
 
         $laptop = Laptops::findOrFail($request->id);
 
-        $reques->num_serie = $reques->num_serie;
-        $laptops->marca = $request->marca;
+        $laptop->num_serie = $request->num_serie;
+        $laptop->marca = $request->marca;
         $laptop->modelo = $request->modelo;
         $laptop->procesador = $request->procesador;
         $laptop->sistema_operativo = $request->so;
         $laptop->antivirus = $request->antivirus;
 
         $laptop->color = $request->color;
-        $laptop->usuario = $reques->usuario;
-        $laptop->password = $equest->password;
-
-        if(isset($request->anydesk)){
-            if($request->anydesk != ''){
-                $laptop->anydesk = $request->anydesk;
-            }
-        }
-
-        if(isset($request->anydeskpassword)){
-            if($request->anydeskpassword != ''){
-                $laptop->anydeskpassword = $request->anydeskpassword;
-            }
-        }
 
         $laptop->update();
 
@@ -202,4 +254,17 @@ class LaptopsController extends Controller
 
         return redirect('/almacen/laptops')->with('success','Se elimino con exito la laptop: '.$laptop->num_serie);
     }
+
+    public function cargar_csv(){
+        return view('laptops.cargar_csv')
+            ->with('titulo','Cargar Laptops desde Archivo CSV / EXCEL.')
+            ;
+    }
+
+    public function exportar_plantilla(){
+        $export = new ArchivoLaptops;
+        return Excel::download($export, 'ejemplo.xlsx');
+    }
+
+
 }

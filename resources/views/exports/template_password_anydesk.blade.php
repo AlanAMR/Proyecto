@@ -1,0 +1,20 @@
+<table>
+    <thead>
+    <tr>
+        <th>Equipo_id</th>
+        <th>Tipo_id</th>
+        <th>Identificador</th>
+        <th>Anydesk</th>
+        <th>Contraseña</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>Equipo1</td>
+            <td>123 231 234</td>
+            <td>password123</td>
+        </tr>
+    </tbody>
+</table>

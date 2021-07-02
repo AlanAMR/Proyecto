@@ -28,16 +28,19 @@ class HomeController extends Controller
 
     public function mail(Request $request){
 
-        Mail::to(config('mail.from.address'))->send(new contacto($request));
+        //Mail::to(config('mail.from.address'))->send(new contacto($request));
         
+        Mail::to('contacto@telsacel.com')->send(new contacto($request));
+        
+
         return redirect()->back()->with('success','Se envio correctamente el mensaje!');
     }
 
     public function getDatos(){
         return [
             'titulo' => 'Inicio',
-            'organizacion' => 'PRO CODE',
-            'logo' => 'img/logo.png',
+            'organizacion' => 'Telsa Solutions',
+            'logo' => 'telsa/assets/img/navbar-logo.svg',
             'telefono' => '33-3550-5663',
             'email' => 'procodegdl@gmail.com',
             'facebook' => 'https://www.facebook.com/proocode/'

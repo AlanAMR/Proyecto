@@ -8,6 +8,12 @@
     </button>
 </a>
 
+<a href="{{url('almacen/laptops/cargar_csv')}}">
+    <button type="button" class="btn btn-outline-primary btn-sm">
+      Subir CSV / Excel <i class="fa fa-plus-circle"></i>
+    </button>
+</a>
+
 @endsection
 
 @section('main_div')
@@ -18,6 +24,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nº Serie</th>
+                    <th>Estado</th>
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Procesador</th>
@@ -30,6 +37,19 @@
                     <tr>
                         <th>{{$laptop->id}}</th>
                         <th>{{$laptop->num_serie}}</th>
+                        <th>
+                            @switch($laptop->status)
+                            @case(1)
+                                En Stock
+                            @break
+                            @case(2)
+                                Asignada
+                            @break
+                            @case(3)
+                                Baja
+                            @break
+                            @endswitch
+                        </th>
                         <th>{{$laptop->marca}}</th>
                         <th>{{$laptop->modelo}}</th>
                         <th>{{$laptop->procesador}}</th>
@@ -94,6 +114,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nº Serie</th>
+                    <th>Estado</th>
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Procesador</th>
